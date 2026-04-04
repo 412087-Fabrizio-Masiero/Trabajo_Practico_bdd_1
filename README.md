@@ -114,16 +114,7 @@ node server.js
 
 - **Backend**: Express.js, Socket.io, ioredis
 - **Frontend**: Vanilla JS, CSS Variables
-- **Base de datos**: Redis
-- **Charts**: Chart.js (opcional)
-
-## Configuración de entorno
-
-Para cambiar el host de Redis:
-
-```bash
-export REDIS_HOST=192.168.1.100
-```
+- **Base de datos**: Redis (localhost:6379)
 
 ## Licencia
 
