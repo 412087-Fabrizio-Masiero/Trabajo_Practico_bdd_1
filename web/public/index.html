@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmality</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">
+          <span class="logo-icon">🏥</span>
+          <span class="logo-text">Farmality</span>
+        </div>
+        <nav class="nav">
+          <a href="#dashboard" class="nav-link" data-view="dashboard">Dashboard</a>
+          <a href="#products" class="nav-link" data-view="products">Productos</a>
+          <a href="#sales" class="nav-link" data-view="sales">Ventas</a>
+          <a href="#reservations" class="nav-link" data-view="reservations">Reservas</a>
+          <a href="#movements" class="nav-link" data-view="movements">Historial</a>
+          <a href="#reports" class="nav-link" data-view="reports">Reportes</a>
+          <a href="#alerts" class="nav-link" data-view="alerts">Alertas</a>
+          <button id="theme-toggle" class="btn btn-sm btn-secondary" title="Cambiar tema" style="margin-left: 8px;">🌙</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Dashboard -->
+      <section id="view-dashboard" class="view">
+        <h1>Dashboard</h1>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">📦</div>
+            <div class="stat-value" id="stat-total-products">-</div>
+            <div class="stat-label">Productos</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <div class="stat-value" id="stat-total-stock">-</div>
+            <div class="stat-label">Stock</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">💰</div>
+            <div class="stat-value" id="stat-total-value">-</div>
+            <div class="stat-label">Valor</div>
+          </div>
+          <div class="stat-card warning">
+            <div class="stat-icon">⚠️</div>
+            <div class="stat-value" id="stat-low-stock">-</div>
+            <div class="stat-label">Stock Bajo</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">⏰</div>
+            <div class="stat-value" id="stat-expiring">-</div>
+            <div class="stat-label">Por Vencer</div>
+          </div>
+        </div>
+        <div class="section">
+          <h2>Categorías</h2>
+          <div id="categories-container" class="categories-grid">Cargando...</div>
+        </div>
+        <div class="section">
+          <h2>Alertas Recientes</h2>
+          <div id="recent-alerts" class="alerts-list">Cargando...</div>
+        </div>
+      </section>
+
+      <!-- Products -->
+      <section id="view-products" class="view">
+        <div class="view-header">
+          <h1>Productos</h1>
+          <button class="btn btn-primary" onclick="openProductModal()">+ Nuevo Producto</button>
+        </div>
+        <div class="filters-bar">
+          <input type="text" id="search-input" placeholder="Buscar productos..." class="search-input">
+          <select id="filter-category" class="filter-select">
+            <option value="">Todas las categorías</option>
+          </select>
+          <label class="checkbox-label">
+            <input type="checkbox" id="filter-low-stock">
+            Solo stock bajo
+          </label>
+          <select id="sort-select" class="filter-select">
+            <option value="name">Ordenar por nombre</option>
+            <option value="stock">Ordenar por stock</option>
+            <option value="price">Ordenar por precio</option>
+            <option value="expiry">Ordenar por vencimiento</option>
+          </select>
+        </div>
+        <div id="products-container" class="products-grid">Cargando...</div>
+      </section>
+
+      <!-- Sales / Ventas -->
+      <section id="view-sales" class="view">
+        <div class="view-header">
+          <h1>Nueva Venta</h1>
+        </div>
+        
+        <div class="sales-layout" style="display: grid; grid-template-columns: 1fr 350px; gap: 24px;">
+          <!-- Buscador de productos -->
+          <div class="section">
+            <h2>Buscar Productos</h2>
+            <div class="filters-bar">
+              <input type="text" id="search-sale-product" placeholder="Buscar por nombre o código..." class="search-input">
+            </div>
+            <div id="sale-products-list" class="products-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">Cargando...</div>
+          </div>
+          
+          <!-- Carrito -->
+          <div class="section" style="position: sticky; top: 80px; height: fit-content;">
+            <h2>Carrito</h2>
+            <div id="sale-cart-items" class="alerts-list" style="max-height: 300px; overflow-y: auto;">
+              <p class="empty-state">Agrega productos</p>
+            </div>
+            
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span>Subtotal:</span>
+                <span id="sale-subtotal">$0</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <label>Descuento:</label>
+                <input type="number" id="sale-discount" min="0" max="100" value="0" style="width: 60px; padding: 4px 8px; border: 1px solid var(--border); border-radius: 4px;">
+                <span>%</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: bold; margin-bottom: 16px;">
+                <span>Total:</span>
+                <span id="sale-total" style="color: var(--primary);">$0</span>
+              </div>
+              
+              <div class="form-group">
+                <label>Método de pago</label>
+                <select id="sale-payment-method" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 8px;">
+                  <option value="efectivo">Efectivo</option>
+                  <option value="debito">Tarjeta Débito</option>
+                  <option value="credito">Tarjeta Crédito</option>
+                  <option value="mercado_pago">Mercado Pago</option>
+                  <option value="transferencia">Transferencia</option>
+                </select>
+              </div>
+              
+              <button class="btn btn-primary" style="width: 100%;" onclick="finalizeSale()">Finalizar Venta</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alerts -->
+      <section id="view-alerts" class="view">
+        <div class="view-header">
+          <h1>Alertas</h1>
+        </div>
+        <div class="alerts-tabs">
+          <button class="tab-btn active" data-filter="all">Todas</button>
+          <button class="tab-btn" data-filter="low-stock">Stock Bajo</button>
+          <button class="tab-btn" data-filter="expiring">Por Vencer</button>
+        </div>
+        <div id="alerts-container" class="alerts-list"></div>
+      </section>
+
+      <!-- Reservations -->
+      <section id="view-reservations" class="view">
+        <div class="view-header">
+          <h1>Reservas</h1>
+          <button class="btn btn-primary" onclick="openReservationModal()">+ Nueva Reserva</button>
+        </div>
+        <div class="filters-bar">
+          <select id="filter-reservation-status" class="filter-select" onchange="loadReservations()">
+            <option value="">Todas las reservas</option>
+            <option value="active">Activas</option>
+            <option value="expired">Expiradas</option>
+            <option value="completed">Completadas</option>
+            <option value="cancelled">Canceladas</option>
+          </select>
+        </div>
+        <div id="reservations-container" class="reservations-list">Cargando...</div>
+      </section>
+
+      <!-- Movements / Historial -->
+      <section id="view-movements" class="view">
+        <div class="view-header">
+          <h1>Historial de Movimientos</h1>
+          <button class="btn btn-secondary" onclick="exportMovements()">Exportar CSV</button>
+        </div>
+        <div class="filters-bar">
+          <input type="text" id="search-movement-product" placeholder="Buscar por código o nombre..." class="search-input">
+          <select id="filter-movement-type" class="filter-select" onchange="loadMovements()">
+            <option value="">Todos los tipos</option>
+            <option value="entry">Entrada</option>
+            <option value="sale">Venta</option>
+            <option value="exit">Salida</option>
+            <option value="adjustment">Ajuste</option>
+            <option value="reservation">Reserva</option>
+            <option value="reservation_release">Liberación</option>
+            <option value="reservation_complete">Completada</option>
+          </select>
+          <input type="date" id="filter-movement-date-from" class="filter-select" onchange="loadMovements()" title="Desde">
+          <input type="date" id="filter-movement-date-to" class="filter-select" onchange="loadMovements()" title="Hasta">
+        </div>
+        <div id="movements-container" class="movements-list">Cargando...</div>
+      </section>
+
+      <!-- Reports -->
+      <section id="view-reports" class="view">
+        <div class="view-header">
+          <h1>Reportes</h1>
+        </div>
+        
+        <div class="reports-tabs">
+          <button class="tab-btn active" data-report="stock-low" onclick="loadReport('stock-low', this)">Stock Bajo</button>
+          <button class="tab-btn" data-report="inventory-value" onclick="loadReport('inventory-value', this)">Valor Inventario</button>
+          <button class="tab-btn" data-report="expiring" onclick="loadReport('expiring', this)">Por Vencer</button>
+          <button class="tab-btn" data-report="top-products" onclick="loadReport('top-products', this)">Más Vendidos</button>
+          <button class="tab-btn" data-report="reservations" onclick="loadReport('reservations', this)">Reservas</button>
+        </div>
+        
+        <div id="reports-container" class="reports-content">Selecciona un reporte</div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal para crear/editar producto -->
+  <div id="product-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Nuevo Producto</h2>
+        <button class="modal-close" onclick="closeProductModal()">&times;</button>
+      </div>
+      <form id="product-form" class="product-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="product-code">Código</label>
+            <input type="text" id="product-code" required>
+          </div>
+          <div class="form-group">
+            <label for="product-name">Nombre</label>
+            <input type="text" id="product-name" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="product-description">Descripción</label>
+          <textarea id="product-description" rows="2"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="product-category">Categoría</label>
+            <select id="product-category">
+              <option value="">Seleccionar...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="product-laboratory">Laboratorio</label>
+            <input type="text" id="product-laboratory" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="product-price">Precio</label>
+            <input type="number" id="product-price" min="0" step="0.01" required>
+          </div>
+          <div class="form-group">
+            <label for="product-batch">Número de Lote</label>
+            <input type="text" id="product-batch" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="product-stock">Stock</label>
+            <input type="number" id="product-stock" min="0" required>
+          </div>
+          <div class="form-group">
+            <label for="product-min-stock">Stock Mínimo</label>
+            <input type="number" id="product-min-stock" min="0" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="product-expiry">Fecha de Vencimiento</label>
+          <input type="date" id="product-expiry">
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-danger" id="delete-product-btn" onclick="deleteCurrentProduct()" style="display:none;">Eliminar</button>
+          <button type="button" class="btn btn-secondary" onclick="closeProductModal()">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal para ajustar stock -->
+  <div id="stock-modal" class="modal">
+    <div class="modal-content modal-small">
+      <div class="modal-header">
+        <h2>Ajustar Stock</h2>
+        <button class="modal-close" onclick="closeStockModal()">&times;</button>
+      </div>
+      <div class="stock-form">
+        <div class="stock-product-info">
+          <div>
+            <div id="stock-product-name" style="font-weight:600;">-</div>
+            <div id="stock-product-code" style="font-size:12px;color:#888;">-</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:12px;color:#888;">Stock actual</div>
+            <div id="stock-current-value" style="font-size:24px;font-weight:600;color:var(--primary);">-</div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label style="font-weight:500;margin-bottom:8px;display:block;">Tipo de ajuste</label>
+          <div style="display:flex;gap:8px;margin-bottom:12px;">
+            <button type="button" class="btn btn-sm stock-mode-btn active" data-mode="set" onclick="setStockMode('set')" style="flex:1;">Establecer valor</button>
+            <button type="button" class="btn btn-sm stock-mode-btn" data-mode="add" onclick="setStockMode('add')" style="flex:1;">Sumar</button>
+            <button type="button" class="btn btn-sm stock-mode-btn" data-mode="subtract" onclick="setStockMode('subtract')" style="flex:1;">Restar</button>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="stock-adjustment" id="stock-adjustment-label">Nuevo valor de stock</label>
+          <input type="number" id="stock-adjustment" value="0" min="0">
+          <small id="stock-adjustment-hint" style="color:#888;display:block;margin-top:4px;"></small>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-secondary" onclick="closeStockModal()">Cancelar</button>
+          <button class="btn btn-primary" onclick="applyStockAdjustment()">Aplicar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor para notificaciones -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Modal para crear reserva -->
+  <div id="reservation-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Nueva Reserva</h2>
+        <button class="modal-close" onclick="closeReservationModal()">&times;</button>
+      </div>
+      <form id="reservation-form" class="product-form">
+        <div class="form-group">
+          <label for="customer-name">Nombre del Cliente</label>
+          <input type="text" id="customer-name" required>
+        </div>
+        <div class="form-group">
+          <label for="reservation-products">Productos</label>
+          <div id="reservation-products-list" class="reservation-products-list">
+            <p class="empty-state" style="padding:20px;">Selecciona productos desde la vista de Productos</p>
+          </div>
+          <button type="button" class="btn btn-sm btn-secondary" onclick="addReservationProduct()" style="margin-top:8px;">+ Agregar producto</button>
+        </div>
+        <div id="reservation-items-input" style="display:none;"></div>
+        <div class="form-group">
+          <label>Total</label>
+          <div id="reservation-total" style="font-size:24px;font-weight:600;color:var(--primary);">$0</div>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeReservationModal()">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Crear Reserva</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal para agregar producto a reserva -->
+  <div id="add-reservation-product-modal" class="modal">
+    <div class="modal-content modal-small">
+      <div class="modal-header">
+        <h2>Agregar Producto</h2>
+        <button class="modal-close" onclick="closeAddReservationProductModal()">&times;</button>
+      </div>
+      <div class="product-form">
+        <div class="form-group">
+          <label for="add-reservation-search">Buscar producto</label>
+          <input type="text" id="add-reservation-search" class="search-input" placeholder="Buscar por nombre o código..." oninput="filterProductsForReservation()">
+        </div>
+        <div class="form-group">
+          <label for="add-reservation-product-select">Seleccionar Producto</label>
+          <select id="add-reservation-product-select" class="filter-select" size="8"></select>
+        </div>
+        <div class="form-group">
+          <label for="add-reservation-quantity">Cantidad</label>
+          <input type="number" id="add-reservation-quantity" value="1" min="1">
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-secondary" onclick="closeAddReservationProductModal()">Cancelar</button>
+          <button class="btn btn-primary" onclick="confirmAddReservationProduct()">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón back to top -->
+  <button class="back-to-top" id="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <!-- Socket.io -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
