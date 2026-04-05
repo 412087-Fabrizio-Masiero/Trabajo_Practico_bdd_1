@@ -1,0 +1,38 @@
+[
+  {
+    "expiresAt": "2026-04-05T01:32:52.871Z",
+    "cancelledAt": "2026-04-05T01:03:03.296Z",
+    "customerName": "Diego",
+    "total": "59.27",
+    "status": "cancelled",
+    "items": "[{\"code\":\"FEM0175\",\"name\":\"Test embarazo\",\"quantity\":1,\"price\":59.27,\"subtotal\":59.27}]",
+    "completedAt": "",
+    "customerId": "",
+    "createdAt": "2026-04-05T01:02:52.871Z",
+    "id": "res_1775350972871_y4v7xp8e5"
+  },
+  {
+    "expiresAt": "2026-04-05T01:29:04.542Z",
+    "cancelledAt": "",
+    "customerName": "Fabri",
+    "total": "123",
+    "status": "completed",
+    "items": "[{\"code\":\"1235777\",\"name\":\"Peine\",\"quantity\":1,\"price\":123,\"subtotal\":123}]",
+    "completedAt": "2026-04-05T00:59:46.092Z",
+    "customerId": "",
+    "createdAt": "2026-04-05T00:59:04.542Z",
+    "id": "res_1775350744542_da8qmamc7"
+  },
+  {
+    "createdAt": "2026-04-05T01:00:22.092Z",
+    "customerName": "Vicente",
+    "id": "res_1775350822092_nub5w3g43",
+    "status": "active",
+    "total": "121",
+    "expiresAt": "2026-04-05T01:30:22.092Z",
+    "cancelledAt": "",
+    "items": "[{\"code\":\"1231231\",\"name\":\"vimax\",\"quantity\":1,\"price\":121,\"subtotal\":121}]",
+    "completedAt": "",
+    "customerId": ""
+  }
+]
