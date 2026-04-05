@@ -30,3 +30,6 @@ logs
 # Build
 dist/
 build/
+
+# Data exports (sensitive)
+data/

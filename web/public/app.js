@@ -160,9 +160,8 @@ async function loadDashboard() {
     
     document.getElementById('stat-total-products').textContent = stats.totalProducts;
     document.getElementById('stat-total-stock').textContent = formatNumber(stats.totalStock);
-    document.getElementById('stat-total-value').textContent = formatCurrency(stats.totalValue);
     document.getElementById('stat-low-stock').textContent = stats.lowStockCount;
-    document.getElementById('stat-expiring').textContent = stats.expiringCount;
+    document.getElementById('stat-total-reservations').textContent = stats.totalReservations || 0;
     
     renderCategories(categories.categories || []);
     renderRecentAlerts((alerts.alerts || []).slice(0, 5));
@@ -317,9 +316,19 @@ async function loadProducts() {
     const search = document.getElementById('search-input')?.value || '';
     const category = document.getElementById('filter-category')?.value || '';
     const lowStock = document.getElementById('filter-low-stock')?.checked;
+    const offersOnly = document.getElementById('filter-offers')?.checked;
     const sortBy = document.getElementById('sort-select')?.value || 'name';
     
-    const result = await api.getProducts({ search, category, lowStock: lowStock || undefined });
+    // Build query params - only include params when they have values
+    const apiParams = { search, category };
+    if (lowStock === true) {
+      apiParams.lowStock = 'true';
+    }
+    if (offersOnly === true) {
+      apiParams.hasOffer = 'true';
+    }
+    
+    const result = await api.getProducts(apiParams);
     let products = result.products || [];
     
     // Sort
@@ -346,17 +355,92 @@ function renderProducts(products) {
   }
   container.innerHTML = products.map(p => {
     const isLow = p.stock <= p.minStock;
-    return '<div class="product-card">' +
+    
+    // Parse offer - handle both object and string formats (including JavaScript object literal)
+    let hasOffer = false;
+    let discount = 0;
+    
+    if (p.offer) {
+      if (typeof p.offer === 'object') {
+        hasOffer = p.offer.active === true && p.offer.discount > 0;
+        discount = p.offer.discount || 0;
+      } else if (typeof p.offer === 'string') {
+        try {
+          // Try valid JSON first
+          const parsed = JSON.parse(p.offer);
+          hasOffer = parsed.active === true && parsed.discount > 0;
+          discount = parsed.discount || 0;
+        } catch (e) {
+          // Try JavaScript object literal format: {discount:25,active:true}
+          const match = p.offer.match(/\{[^}]*\}/);
+          if (match) {
+            const objStr = match[0];
+            const discountMatch = objStr.match(/discount\s*:\s*(\d+)/);
+            const activeMatch = objStr.match(/active\s*:\s*(true|false)/);
+            if (discountMatch && activeMatch) {
+              discount = parseInt(discountMatch[1], 10);
+              hasOffer = activeMatch[1] === 'true' && discount > 0;
+            }
+          }
+        }
+      }
+    }
+    
+    const offerBadge = hasOffer 
+      ? '<span class="product-offer-badge">🔥 ' + discount + '% OFF</span>' 
+      : '';
+    const originalPrice = hasOffer 
+      ? '<span class="product-original-price">' + formatCurrency(p.price) + '</span>' 
+      : '';
+    const offerPrice = hasOffer 
+      ? formatCurrency(p.price * (1 - discount / 100)) 
+      : formatCurrency(p.price);
+    
+    // Parse drugs for display
+    let drugsHtml = '';
+    if (p.drugs && Array.isArray(p.drugs)) {
+      drugsHtml = p.drugs.map(d => '<span>' + escapeHtml(d.name) + ' ' + escapeHtml(d.quantity) + '</span>').join('');
+      if (drugsHtml) {
+        drugsHtml = '<div class="product-drugs">' + drugsHtml + '</div>';
+      }
+    }
+    
+    // Presentation badge
+    const presentation = p.presentation ? '<span class="product-presentation">' + escapeHtml(p.presentation) + '</span>' : '';
+    
+    // Sale condition badge - color coded
+    let saleConditionHtml = '';
+    if (p.saleCondition) {
+      let badgeClass = 'product-sale-condition';
+      if (p.saleCondition === 'venta-libre') {
+        badgeClass += ' sale-libre';
+      } else if (p.saleCondition === 'bajo-receta' || p.saleCondition === 'receta-simple') {
+        badgeClass += ' receta';
+      } else {
+        badgeClass += ' controlado';
+      }
+      const saleConditionLabels = {
+        'venta-libre': 'Venta Libre',
+        'bajo-receta': 'Bajo Receta',
+        'receta-simple': 'Receta Simple',
+        'receta-archivo': 'Receta Archivo',
+        'psicotropo': 'Psicotrópico',
+        'estupefaciente': 'Estupefaciente'
+      };
+      saleConditionHtml = '<span class="' + badgeClass + '">' + (saleConditionLabels[p.saleCondition] || p.saleCondition) + '</span>';
+    }
+    
+    return '<div class="product-card' + (hasOffer ? ' has-offer' : '') + '">' +
       '<div class="product-header"><div>' +
-        '<div class="product-name">' + escapeHtml(p.name) + '</div>' +
-        '<div class="product-code">' + escapeHtml(p.code) + '</div>' +
-      '</div></div>' +
+        '<div class="product-name">' + escapeHtml(p.name) + presentation + saleConditionHtml + '</div>' +
+        '<div class="product-code"><span class="barcode-text">' + escapeHtml(p.code) + '</span></div>' +
+      '</div>' + offerBadge + '</div>' +
       '<div class="product-category">' + escapeHtml(p.category) + ' | ' + escapeHtml(p.laboratory || 'Sin laboratorio') + '</div>' +
+      drugsHtml +
       '<div class="product-stats">' +
         '<div class="product-stat"><div class="product-stat-label">Stock</div><div class="product-stat-value ' + (isLow ? 'low' : '') + '">' + p.stock + '</div></div>' +
         '<div class="product-stat"><div class="product-stat-label">Mín</div><div class="product-stat-value">' + p.minStock + '</div></div>' +
-        '<div class="product-stat"><div class="product-stat-label">Precio</div><div class="product-stat-value">' + formatCurrency(p.price) + '</div></div>' +
-        '<div class="product-stat"><div class="product-stat-label">Vence</div><div class="product-stat-value">' + formatDate(p.expiryDate) + '</div></div>' +
+        '<div class="product-stat"><div class="product-stat-label">Precio</div><div class="product-stat-value' + (hasOffer ? ' offer-price' : '') + '">' + offerPrice + '</div></div>' +
       '</div>' +
       '<div class="product-actions">' +
         '<button class="btn btn-sm btn-secondary" onclick=\'openProductModal(' + JSON.stringify(p).replace(/'/g, "&#39;") + ')\'>Editar</button>' +
@@ -382,6 +466,25 @@ async function deleteProduct(code) {
     loadDashboard();
   } catch (err) {
     showToast('Error: ' + err.message, 'error');
+  }
+}
+
+async function migrateProducts() {
+  if (!confirm('¿Ejecutar migración de productos? Esto agregará valores por defecto a los productos que les falten campos (presentation, saleCondition, laboratory).')) {
+    return;
+  }
+  
+  try {
+    showToast('Ejecutando migración...', 'info');
+    
+    const result = await apiRequest('/products/migrate', {
+      method: 'PUT',
+    });
+    
+    showToast(`Migración completada: ${result.migrated} productos actualizados de ${result.total}`, 'success');
+    loadProducts();
+  } catch (err) {
+    showToast('Error en migración: ' + err.message, 'error');
   }
 }
 
@@ -432,7 +535,7 @@ function formatNumber(num) {
 }
 
 function formatCurrency(amount) {
-  return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'USD' }).format(amount);
+  return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'ARS' }).format(amount);
 }
 
 function formatDate(dateStr) {
@@ -459,6 +562,12 @@ function initEventListeners() {
   const filterLowStock = document.getElementById('filter-low-stock');
   if (filterLowStock) {
     filterLowStock.addEventListener('change', loadProducts);
+  }
+  
+  // Filter offers checkbox
+  const filterOffers = document.getElementById('filter-offers');
+  if (filterOffers) {
+    filterOffers.addEventListener('change', loadProducts);
   }
   
   // Movement search with debounce
@@ -551,18 +660,57 @@ async function handleProductSubmit(e) {
   e.preventDefault();
   
   const isEditing = state.editingProductCode !== null;
-  const product = {
-    code: document.getElementById('product-code').value,
-    name: document.getElementById('product-name').value,
-    description: document.getElementById('product-description').value || '',
-    category: document.getElementById('product-category').value,
-    price: parseFloat(document.getElementById('product-price').value),
-    stock: parseInt(document.getElementById('product-stock').value),
-    minStock: parseInt(document.getElementById('product-min-stock').value),
-    expiryDate: document.getElementById('product-expiry').value || null,
-    batchNumber: document.getElementById('product-batch').value,
-    laboratory: document.getElementById('product-laboratory').value,
-  };
+  const offerDiscount = parseInt(document.getElementById('product-offer-discount').value) || 0;
+  const offerActive = document.getElementById('product-offer-active').checked;
+  
+  // Collect drugs from the drug rows
+  const drugRows = document.querySelectorAll('.drug-row');
+  const drugs = [];
+  drugRows.forEach(row => {
+    const drugSelect = row.querySelector('.drug-select');
+    const drugQuantity = row.querySelector('.drug-quantity');
+    if (drugSelect.value && drugQuantity.value) {
+      drugs.push({
+        name: drugSelect.value,
+        quantity: drugQuantity.value
+      });
+    }
+  });
+  
+  // Build product object only with non-empty values
+  const product = {};
+  
+  product.code = document.getElementById('product-code').value;
+  product.name = document.getElementById('product-name').value;
+  
+  const description = document.getElementById('product-description').value;
+  if (description) product.description = description;
+  
+  const category = document.getElementById('product-category').value;
+  if (category) product.category = category;
+  
+  product.price = parseFloat(document.getElementById('product-price').value);
+  product.stock = parseInt(document.getElementById('product-stock').value);
+  product.minStock = parseInt(document.getElementById('product-min-stock').value);
+  
+  const laboratory = document.getElementById('product-laboratory').value;
+  if (laboratory) product.laboratory = laboratory;
+  
+  const presentation = document.getElementById('product-presentation').value;
+  if (presentation) product.presentation = presentation;
+  
+  const saleCondition = document.getElementById('product-sale-condition').value;
+  if (saleCondition) product.saleCondition = saleCondition;
+  
+  // Only add drugs if there are valid entries
+  if (drugs.length > 0) {
+    product.drugs = drugs;
+  }
+  
+  // Only add offer if there's a discount
+  if (offerDiscount > 0) {
+    product.offer = { "discount": offerDiscount, "active": offerActive };
+  }
   
   try {
     if (isEditing) {
@@ -613,9 +761,23 @@ function openProductModal(product = null) {
     document.getElementById('product-price').value = product.price;
     document.getElementById('product-stock').value = product.stock;
     document.getElementById('product-min-stock').value = product.minStock;
-    document.getElementById('product-expiry').value = product.expiryDate || '';
-    document.getElementById('product-batch').value = product.batchNumber || '';
     document.getElementById('product-laboratory').value = product.laboratory || '';
+    document.getElementById('product-presentation').value = product.presentation || '';
+    document.getElementById('product-sale-condition').value = product.saleCondition || '';
+    document.getElementById('product-offer-discount').value = product.offer?.discount || 0;
+    document.getElementById('product-offer-active').checked = product.offer?.active || false;
+    
+    // Populate drugs
+    const drugsContainer = document.getElementById('drugs-container');
+    drugsContainer.innerHTML = '';
+    const drugs = product.drugs || [];
+    if (drugs.length === 0) {
+      addDrugRow(); // Add empty row if no drugs
+    } else {
+      drugs.forEach((drug, index) => {
+        addDrugRow(drug.name, drug.quantity, index > 0);
+      });
+    }
   } else {
     // Create mode
     title.textContent = 'Nuevo Producto';
@@ -624,9 +786,61 @@ function openProductModal(product = null) {
     
     document.getElementById('product-form').reset();
     document.getElementById('product-code').readOnly = false;
+    document.getElementById('product-offer-discount').value = 0;
+    document.getElementById('product-offer-active').checked = false;
   }
   
   modal.classList.add('active');
+}
+
+function addDrugRow(drugName = '', drugQuantity = '', showRemove = false) {
+  const container = document.getElementById('drugs-container');
+  const row = document.createElement('div');
+  row.className = 'drug-row';
+  
+  row.innerHTML = `
+    <select class="drug-select">
+      <option value="">Seleccionar droga...</option>
+      <option value="paracetamol">Paracetamol</option>
+      <option value="ibuprofeno">Ibuprofeno</option>
+      <option value="amoxicilina">Amoxicilina</option>
+      <option value="azitromicina">Azitromicina</option>
+      <option value="dipirona">Dipirona</option>
+      <option value="diclofenaco">Diclofenaco</option>
+      <option value="omeprazol">Omeprazol</option>
+      <option value="losartan">Losartán</option>
+      <option value="metformina">Metformina</option>
+      <option value="atorvastatina">Atorvastatina</option>
+      <option value="amlodipino">Amlodipino</option>
+      <option value="enalapril">Enalapril</option>
+      <option value="levotiroxina">Levotiroxina</option>
+      <option value="hidrocortisona">Hidrocortisona</option>
+      <option value="dexametasona">Dexametasona</option>
+      <option value="prednisona">Prednisona</option>
+      <option value="salbutamol">Salbutamol</option>
+      <option value="montelukast">Montelukast</option>
+      <option value="loratadina">Loratadina</option>
+      <option value="cetirizina">Cetirizina</option>
+      <option value="otro">Otra</option>
+    </select>
+    <input type="text" class="drug-quantity" placeholder="Cantidad (ej: 500mg)" value="${escapeHtml(drugQuantity)}">
+    <button type="button" class="btn btn-sm btn-secondary" onclick="addDrugRow()">+</button>
+    <button type="button" class="btn btn-sm btn-danger" onclick="removeDrugRow(this)" ${showRemove ? '' : 'style="display:none"'}>-</button>
+  `;
+  
+  // Set drug name if provided
+  if (drugName) {
+    row.querySelector('.drug-select').value = drugName;
+  }
+  
+  container.appendChild(row);
+}
+
+function removeDrugRow(button) {
+  const container = document.getElementById('drugs-container');
+  if (container.children.length > 1) {
+    button.parentElement.remove();
+  }
 }
 
 function closeProductModal() {
@@ -1480,12 +1694,36 @@ async function loadSalesView() {
   
   try {
     const result = await api.getProducts({ lowStock: undefined });
-    allProductsForSale = (result.products || []).filter(p => p.stock > 0);
+    allProductsForSale = (result.products || []).filter(p => p.stock > 0).map(p => {
+      // Parse offer if it's a string
+      if (p.offer && typeof p.offer === 'string') {
+        try {
+          p.offer = JSON.parse(p.offer);
+        } catch (e) {
+          p.offer = null;
+        }
+      }
+      return p;
+    });
     renderSaleProducts(allProductsForSale);
     
     // Initialize cart
     saleCart = [];
     updateSaleCart();
+    
+    // Setup search filter - without debounce for immediate filtering
+    const saleSearch = document.getElementById('search-sale-product');
+    if (saleSearch) {
+      saleSearch.value = ''; // Clear search on view load
+      saleSearch.addEventListener('input', function() {
+        const term = (this.value || '').toLowerCase();
+        const filtered = allProductsForSale.filter(p => 
+          (p.name && p.name.toLowerCase().includes(term)) || 
+          (p.code && p.code.toLowerCase().includes(term))
+        );
+        renderSaleProducts(filtered);
+      });
+    }
   } catch (err) {
     container.innerHTML = '<p class="error">Error: ' + err.message + '</p>';
   }
@@ -1499,22 +1737,62 @@ function renderSaleProducts(products) {
     return;
   }
   
-  container.innerHTML = products.map(p => 
-    '<div class="product-card">' +
+  container.innerHTML = products.map(p => {
+    // Parse offer if it's a string
+    let offer = null;
+    if (p.offer) {
+      if (typeof p.offer === 'string') {
+        try {
+          offer = JSON.parse(p.offer);
+        } catch (e) {
+          offer = null;
+        }
+      } else if (typeof p.offer === 'object') {
+        offer = p.offer;
+      }
+    }
+    
+    const hasOffer = offer && offer.active && offer.discount > 0;
+    const offerBadge = hasOffer ? '<div class="product-offer-badge">OFERTA -' + offer.discount + '%</div>' : '';
+    
+    // Mostrar precio con descuento si tiene oferta
+    let priceDisplay = formatCurrency(p.price);
+    if (hasOffer) {
+      const discountedPrice = p.price * (1 - offer.discount / 100);
+      priceDisplay = '<span style="text-decoration: line-through; color: #999; font-size: 12px;">' + formatCurrency(p.price) + '</span> ' +
+                     '<span style="color: var(--success); font-weight: bold;">' + formatCurrency(discountedPrice) + '</span>';
+    }
+    
+    return '<div class="product-card">' +
+      offerBadge +
       '<div class="product-name">' + escapeHtml(p.name) + '</div>' +
       '<div class="product-code">' + escapeHtml(p.code) + '</div>' +
       '<div class="product-stats">' +
         '<div class="product-stat"><div class="product-stat-label">Stock</div><div class="product-stat-value">' + p.stock + '</div></div>' +
-        '<div class="product-stat"><div class="product-stat-label">Precio</div><div class="product-stat-value">' + formatCurrency(p.price) + '</div></div>' +
+        '<div class="product-stat"><div class="product-stat-label">Precio</div><div class="product-stat-value">' + priceDisplay + '</div></div>' +
       '</div>' +
       '<button class="btn btn-sm btn-primary" style="width: 100%; margin-top: 8px;" onclick="addToSaleCart(\'' + p.code + '\')">Agregar</button>' +
-    '</div>'
-  ).join('');
+    '</div>';
+  }).join('');
 }
 
 function addToSaleCart(productCode) {
   const product = allProductsForSale.find(p => p.code === productCode);
   if (!product) return;
+  
+  // Parse offer if it's a string
+  let offer = null;
+  if (product.offer) {
+    if (typeof product.offer === 'string') {
+      try {
+        offer = JSON.parse(product.offer);
+      } catch (e) {
+        offer = null;
+      }
+    } else if (typeof product.offer === 'object') {
+      offer = product.offer;
+    }
+  }
   
   const existing = saleCart.find(item => item.code === productCode);
   if (existing) {
@@ -1529,7 +1807,8 @@ function addToSaleCart(productCode) {
       name: product.name,
       price: product.price,
       quantity: 1,
-      maxStock: product.stock
+      maxStock: product.stock,
+      offer: offer
     });
   }
   
@@ -1561,23 +1840,51 @@ function updateSaleCartItemQuantity(productCode, newQuantity) {
 
 function updateSaleCart() {
   const container = document.getElementById('sale-cart-items');
-  const discountPercent = parseInt(document.getElementById('sale-discount')?.value) || 0;
   
   if (!saleCart.length) {
     container.innerHTML = '<p class="empty-state">Agrega productos</p>';
     document.getElementById('sale-subtotal').textContent = '$0';
     document.getElementById('sale-total').textContent = '$0';
+    document.getElementById('sale-discount-details').innerHTML = '';
     return;
   }
   
   let subtotal = 0;
+  let totalDiscount = 0;
+  let discountDetails = [];
+  
   container.innerHTML = saleCart.map(item => {
-    const itemTotal = item.price * item.quantity;
+    // Calcular precio con descuento si tiene oferta
+    let finalPrice = item.price;
+    let originalPrice = item.price;
+    let hasOffer = item.offer && item.offer.active && item.offer.discount > 0;
+    
+    if (hasOffer) {
+      finalPrice = item.price * (1 - item.offer.discount / 100);
+      originalPrice = item.price;
+      const itemDiscount = (originalPrice - finalPrice) * item.quantity;
+      totalDiscount += itemDiscount;
+      discountDetails.push({
+        name: item.name,
+        discount: itemDiscount,
+        percent: item.offer.discount
+      });
+    }
+    
+    const itemTotal = finalPrice * item.quantity;
     subtotal += itemTotal;
+    
+    // Mostrar precio con descuento y sin descuento
+    let priceDisplay = formatCurrency(finalPrice);
+    if (hasOffer) {
+      priceDisplay = '<span style="text-decoration: line-through; color: #999; font-size: 12px;">' + formatCurrency(originalPrice) + '</span> ' +
+                     '<span style="color: var(--success); font-weight: bold;">' + formatCurrency(finalPrice) + '</span>';
+    }
+    
     return '<div class="alert-item">' +
       '<div class="alert-content">' +
         '<div class="alert-title">' + escapeHtml(item.name) + '</div>' +
-        '<div class="alert-message">' + formatCurrency(item.price) + ' x ' + item.quantity + ' = ' + formatCurrency(itemTotal) + '</div>' +
+        '<div class="alert-message">' + priceDisplay + ' x ' + item.quantity + ' = ' + formatCurrency(itemTotal) + '</div>' +
       '</div>' +
       '<div style="display: flex; align-items: center; gap: 8px;">' +
         '<input type="number" min="1" max="' + item.maxStock + '" value="' + item.quantity + '" ' +
@@ -1588,10 +1895,30 @@ function updateSaleCart() {
     '</div>';
   }).join('');
   
-  const discountAmount = subtotal * (discountPercent / 100);
-  const total = subtotal - discountAmount;
+  // Calcular total
+  const total = subtotal;
   
+  // Mostrar subtotal (aquí es el total con descuentos aplicados para mantener compatibilidad)
   document.getElementById('sale-subtotal').textContent = formatCurrency(subtotal);
+  
+  // Mostrar descuento si hay
+  let discountHtml = '';
+  if (totalDiscount > 0) {
+    discountHtml = '<div style="display: flex; justify-content: space-between; margin-bottom: 4px; color: var(--success); font-weight: bold;">' +
+      '<span>Descuento:</span>' +
+      '<span>-' + formatCurrency(totalDiscount) + '</span>' +
+    '</div>';
+    // Mostrar detalle de descuentos
+    discountDetails.forEach(d => {
+      discountHtml += '<div style="display: flex; justify-content: space-between; font-size: 11px; color: #666; margin-left: 8px;">' +
+        '<span>' + d.name + ' (-' + d.percent + '%)</span>' +
+        '<span>-' + formatCurrency(d.discount) + '</span>' +
+      '</div>';
+    });
+  }
+  
+  document.getElementById('sale-discount-details').innerHTML = discountHtml;
+  
   document.getElementById('sale-total').textContent = formatCurrency(total);
 }
 
@@ -1601,7 +1928,18 @@ async function finalizeSale() {
     return;
   }
   
-  const discountPercent = parseInt(document.getElementById('sale-discount')?.value) || 0;
+  // Calcular descuento total basado en ofertas de productos
+  let totalDiscount = 0;
+  let originalTotal = 0;
+  saleCart.forEach(item => {
+    const itemTotal = item.price * item.quantity;
+    originalTotal += itemTotal;
+    if (item.offer && item.offer.active && item.offer.discount > 0) {
+      totalDiscount += itemTotal * (item.offer.discount / 100);
+    }
+  });
+  
+  const discountPercent = originalTotal > 0 ? (totalDiscount / originalTotal) * 100 : 0;
   const paymentMethod = document.getElementById('sale-payment-method')?.value || 'efectivo';
   
   const items = saleCart.map(item => ({
@@ -1675,18 +2013,6 @@ function showTicket(sale) {
 
 // Search handler for sales
 document.addEventListener('DOMContentLoaded', function() {
-  const saleSearch = document.getElementById('search-sale-product');
-  if (saleSearch) {
-    saleSearch.addEventListener('input', debounce(function() {
-      const term = this.value.toLowerCase();
-      const filtered = allProductsForSale.filter(p => 
-        p.name.toLowerCase().includes(term) || 
-        p.code.toLowerCase().includes(term)
-      );
-      renderSaleProducts(filtered);
-    }, 300));
-  }
-  
   // Discount change handler
   const discountInput = document.getElementById('sale-discount');
   if (discountInput) {

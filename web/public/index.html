@@ -11,8 +11,10 @@
     <header class="header">
       <div class="header-content">
         <div class="logo">
-          <span class="logo-icon">🏥</span>
-          <span class="logo-text">Farmality</span>
+          <a href="#dashboard" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;">
+            <span class="logo-icon">🏥</span>
+            <span class="logo-text">Farmality</span>
+          </a>
         </div>
         <nav class="nav">
           <a href="#dashboard" class="nav-link" data-view="dashboard">Dashboard</a>
@@ -42,20 +44,15 @@
             <div class="stat-value" id="stat-total-stock">-</div>
             <div class="stat-label">Stock</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-icon">💰</div>
-            <div class="stat-value" id="stat-total-value">-</div>
-            <div class="stat-label">Valor</div>
-          </div>
           <div class="stat-card warning">
             <div class="stat-icon">⚠️</div>
             <div class="stat-value" id="stat-low-stock">-</div>
             <div class="stat-label">Stock Bajo</div>
           </div>
           <div class="stat-card">
-            <div class="stat-icon">⏰</div>
-            <div class="stat-value" id="stat-expiring">-</div>
-            <div class="stat-label">Por Vencer</div>
+            <div class="stat-icon">📋</div>
+            <div class="stat-value" id="stat-total-reservations">-</div>
+            <div class="stat-label">Reservas</div>
           </div>
         </div>
         <div class="section">
@@ -82,6 +79,10 @@
           <label class="checkbox-label">
             <input type="checkbox" id="filter-low-stock">
             Solo stock bajo
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="filter-offers">
+            Solo ofertas
           </label>
           <select id="sort-select" class="filter-select">
             <option value="name">Ordenar por nombre</option>
@@ -121,11 +122,7 @@
                 <span>Subtotal:</span>
                 <span id="sale-subtotal">$0</span>
               </div>
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                <label>Descuento:</label>
-                <input type="number" id="sale-discount" min="0" max="100" value="0" style="width: 60px; padding: 4px 8px; border: 1px solid var(--border); border-radius: 4px;">
-                <span>%</span>
-              </div>
+              <div id="sale-discount-details"></div>
               <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: bold; margin-bottom: 16px;">
                 <span>Total:</span>
                 <span id="sale-total" style="color: var(--primary);">$0</span>
@@ -156,7 +153,6 @@
         <div class="alerts-tabs">
           <button class="tab-btn active" data-filter="all">Todas</button>
           <button class="tab-btn" data-filter="low-stock">Stock Bajo</button>
-          <button class="tab-btn" data-filter="expiring">Por Vencer</button>
         </div>
         <div id="alerts-container" class="alerts-list"></div>
       </section>
@@ -212,7 +208,6 @@
         <div class="reports-tabs">
           <button class="tab-btn active" data-report="stock-low" onclick="loadReport('stock-low', this)">Stock Bajo</button>
           <button class="tab-btn" data-report="inventory-value" onclick="loadReport('inventory-value', this)">Valor Inventario</button>
-          <button class="tab-btn" data-report="expiring" onclick="loadReport('expiring', this)">Por Vencer</button>
           <button class="tab-btn" data-report="top-products" onclick="loadReport('top-products', this)">Más Vendidos</button>
           <button class="tab-btn" data-report="reservations" onclick="loadReport('reservations', this)">Reservas</button>
         </div>
@@ -251,10 +246,78 @@
               <option value="">Seleccionar...</option>
             </select>
           </div>
+        </div>
+        <div class="form-row">
           <div class="form-group">
-            <label for="product-laboratory">Laboratorio</label>
-            <input type="text" id="product-laboratory" required>
+            <label for="product-presentation">Tipo de Presentación</label>
+            <select id="product-presentation" required>
+              <option value="">Seleccionar...</option>
+              <option value="comprimido">Comprimido</option>
+              <option value="capsula">Cápsula</option>
+              <option value="jarabe">Jarabe</option>
+              <option value="inyectable">Inyectable</option>
+              <option value="crema">Crema</option>
+              <option value="gel">Gel</option>
+              <option value="gotas">Gotas</option>
+              <option value="pomada">Pomada</option>
+              <option value="aerosol">Aerosol</option>
+              <option value="pastilla">Pastilla</option>
+              <option value="sobre">Sobre</option>
+              <option value="supositorio">Supositorio</option>
+              <option value="parche">Parche</option>
+              <option value="otro">Otro</option>
+            </select>
           </div>
+          <div class="form-group">
+            <label for="product-sale-condition">Condición de Venta</label>
+            <select id="product-sale-condition" required>
+              <option value="">Seleccionar...</option>
+              <option value="venta-libre">Venta Libre</option>
+              <option value="bajo-receta">Bajo Receta</option>
+              <option value="receta-simple">Receta Simple</option>
+              <option value="receta-archivo">Receta Archivo</option>
+              <option value="psicotropo">Psicotrópico</option>
+              <option value="estupefaciente">Estupefaciente</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="product-laboratory">Laboratorio</label>
+          <select id="product-laboratory" required>
+            <option value="">Seleccionar...</option>
+            <option value="Bayer">Bayer</option>
+            <option value="Roche">Roche</option>
+            <option value="Novartis">Novartis</option>
+            <option value="Pfizer">Pfizer</option>
+            <option value="Merck">Merck</option>
+            <option value="GSK">GSK</option>
+            <option value="Johnson & Johnson">Johnson & Johnson</option>
+            <option value="Sanofi">Sanofi</option>
+            <option value="Abbott">Abbott</option>
+            <option value="Bristol Myers Squibb">Bristol Myers Squibb</option>
+            <option value="Boehringer Ingelheim">Boehringer Ingelheim</option>
+            <option value="Takeda">Takeda</option>
+            <option value="AstraZeneca">AstraZeneca</option>
+            <option value="Eli Lilly">Eli Lilly</option>
+            <option value="Amgen">Amgen</option>
+            <option value="Gilead">Gilead</option>
+            <option value="Biogen">Biogen</option>
+            <option value="Vertex">Vertex</option>
+            <option value="Regeneron">Regeneron</option>
+            <option value="Moderna">Moderna</option>
+            <option value="Elea">Elea</option>
+            <option value="Bagó">Bagó</option>
+            <option value="Sidus">Sidus</option>
+            <option value="Klonal">Klonal</option>
+            <option value="Tuteur">Tuteur</option>
+            <option value="Fresenius Kabi">Fresenius Kabi</option>
+            <option value="Montpellier">Montpellier</option>
+            <option value="Schaerer">Schaerer</option>
+            <option value="Bausch">Bausch</option>
+            <option value="Poen">Poen</option>
+            <option value="Casasco">Casasco</option>
+            <option value="Otro">Otro</option>
+          </select>
         </div>
         <div class="form-row">
           <div class="form-group">
@@ -262,23 +325,59 @@
             <input type="number" id="product-price" min="0" step="0.01" required>
           </div>
           <div class="form-group">
-            <label for="product-batch">Número de Lote</label>
-            <input type="text" id="product-batch" required>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
             <label for="product-stock">Stock</label>
             <input type="number" id="product-stock" min="0" required>
           </div>
-          <div class="form-group">
-            <label for="product-min-stock">Stock Mínimo</label>
-            <input type="number" id="product-min-stock" min="0" required>
+        </div>
+        <div class="form-group">
+          <label for="product-min-stock">Stock Mínimo</label>
+          <input type="number" id="product-min-stock" min="0" required>
+        </div>
+        <div class="form-row" style="align-items: center;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="product-offer-discount">Descuento Oferta (%)</label>
+            <input type="number" id="product-offer-discount" min="0" max="100" step="1" placeholder="0">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+              <input type="checkbox" id="product-offer-active" style="width: 18px; height: 18px; margin: 0;">
+              <span>Oferta Activa</span>
+            </label>
           </div>
         </div>
         <div class="form-group">
-          <label for="product-expiry">Fecha de Vencimiento</label>
-          <input type="date" id="product-expiry">
+          <label>Droga(s) - Principio Activo</label>
+          <div id="drugs-container">
+            <div class="drug-row">
+              <select class="drug-select">
+                <option value="">Seleccionar droga...</option>
+                <option value="paracetamol">Paracetamol</option>
+                <option value="ibuprofeno">Ibuprofeno</option>
+                <option value="amoxicilina">Amoxicilina</option>
+                <option value="azitromicina">Azitromicina</option>
+                <option value="dipirona">Dipirona</option>
+                <option value="diclofenaco">Diclofenaco</option>
+                <option value="omeprazol">Omeprazol</option>
+                <option value="losartan">Losartán</option>
+                <option value="metformina">Metformina</option>
+                <option value="atorvastatina">Atorvastatina</option>
+                <option value="amlodipino">Amlodipino</option>
+                <option value="enalapril">Enalapril</option>
+                <option value="levotiroxina">Levotiroxina</option>
+                <option value="hidrocortisona">Hidrocortisona</option>
+                <option value="dexametasona">Dexametasona</option>
+                <option value="prednisona">Prednisona</option>
+                <option value="salbutamol">Salbutamol</option>
+                <option value="montelukast">Montelukast</option>
+                <option value="loratadina">Loratadina</option>
+                <option value="cetirizina">Cetirizina</option>
+                <option value="otro">Otra</option>
+              </select>
+              <input type="text" class="drug-quantity" placeholder="Cantidad (ej: 500mg)">
+              <button type="button" class="btn btn-sm btn-secondary" onclick="addDrugRow()">+</button>
+              <button type="button" class="btn btn-sm btn-danger" onclick="removeDrugRow(this)" style="display:none;">-</button>
+            </div>
+          </div>
         </div>
         <div class="form-actions">
           <button type="button" class="btn btn-danger" id="delete-product-btn" onclick="deleteCurrentProduct()" style="display:none;">Eliminar</button>

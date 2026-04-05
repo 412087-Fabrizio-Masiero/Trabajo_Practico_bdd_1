@@ -36,7 +36,7 @@ async function recordStockMovement(client, productCode, productName, type, quant
 // Validación básica de producto
 function validateProductInput(body) {
   const errors = [];
-  const { code, name, category, price, stock, minStock, expiryDate, batchNumber, laboratory } = body;
+  const { code, name, category, price, stock, minStock, laboratory, presentation, saleCondition } = body;
   
   if (!code || typeof code !== 'string') errors.push('Código es requerido');
   if (!name || typeof name !== 'string') errors.push('Nombre es requerido');
@@ -44,9 +44,9 @@ function validateProductInput(body) {
   if (typeof price !== 'number' || price <= 0) errors.push('Precio debe ser un número positivo');
   if (typeof stock !== 'number' || stock < 0) errors.push('Stock debe ser un número no negativo');
   if (typeof minStock !== 'number' || minStock < 0) errors.push('Stock mínimo debe ser un número no negativo');
-  if (!expiryDate || !/^\d{4}-\d{2}-\d{2}$/.test(expiryDate)) errors.push('Fecha de vencimiento inválida (formato: YYYY-MM-DD)');
-  if (!batchNumber || typeof batchNumber !== 'string') errors.push('Número de lote es requerido');
   if (!laboratory || typeof laboratory !== 'string') errors.push('Laboratorio es requerido');
+  if (!presentation || typeof presentation !== 'string') errors.push('Tipo de presentación es requerido');
+  if (!saleCondition || typeof saleCondition !== 'string') errors.push('Condición de venta es requerida');
   
   return errors;
 }
@@ -55,7 +55,7 @@ function validateProductInput(body) {
 router.get('/', async (req, res) => {
   let client = null;
   try {
-    const { category, search, lowStock } = req.query;
+    const { category, search, lowStock, hasOffer } = req.query;
     client = getRedisClient();
     
     // NO llamar a connect() - ioredis se conecta automáticamente
@@ -77,6 +77,15 @@ router.get('/', async (req, res) => {
         product.stock = parseInt(product.stock);
         product.minStock = parseInt(product.minStock);
         
+        // Parsear drugs desde JSON string
+        if (product.drugs && typeof product.drugs === 'string') {
+          try {
+            product.drugs = JSON.parse(product.drugs);
+          } catch (e) {
+            product.drugs = [];
+          }
+        }
+        
         // Filtrar por búsqueda
         if (search) {
           const searchLower = search.toLowerCase();
@@ -91,6 +100,47 @@ router.get('/', async (req, res) => {
         // Filtrar stock bajo
         if (lowStock === 'true' && product.stock > product.minStock) {
           continue;
+        }
+        
+        // Filtrar por oferta activa
+        if (hasOffer === 'true') {
+          let hasActiveOffer = false;
+          
+          if (product.offer && product.offer !== '[object Object]') {
+            try {
+              // Try to parse as JSON first
+              const offer = typeof product.offer === 'string' 
+                ? JSON.parse(product.offer) 
+                : product.offer;
+              
+              if (offer && offer.discount > 0 && offer.active === true) {
+                hasActiveOffer = true;
+              }
+            } catch (e) {
+              // If JSON parse fails, try regex for JavaScript object literal
+              const offerStr = String(product.offer);
+              const match = offerStr.match(/\{([^}]+)\}/);
+              
+              if (match) {
+                const content = match[1];
+                const discountMatch = content.match(/discount\s*:\s*(\d+)/);
+                const activeMatch = content.match(/active\s*:\s*(true|false)/);
+                
+                if (discountMatch && activeMatch) {
+                  const discount = parseInt(discountMatch[1], 10);
+                  const isActive = activeMatch[1] === 'true';
+                  
+                  if (isActive && discount > 0) {
+                    hasActiveOffer = true;
+                  }
+                }
+              }
+            }
+          }
+          
+          if (!hasActiveOffer) {
+            continue;
+          }
         }
         
         products.push(product);
@@ -127,6 +177,15 @@ router.get('/:code', async (req, res) => {
     product.stock = parseInt(product.stock);
     product.minStock = parseInt(product.minStock);
     
+    // Parsear drugs desde JSON string
+    if (product.drugs && typeof product.drugs === 'string') {
+      try {
+        product.drugs = JSON.parse(product.drugs);
+      } catch (e) {
+        product.drugs = [];
+      }
+    }
+    
     res.json(product);
   } catch (err) {
     console.error('Error obteniendo producto:', err);
@@ -142,7 +201,7 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ error: 'Datos inválidos', details: errors });
     }
     
-    const { code, name, description, category, price, stock, minStock, expiryDate, batchNumber, laboratory } = req.body;
+    const { code, name, description, category, price, stock, minStock, laboratory, presentation, saleCondition, drugs, offer } = req.body;
     const client = getRedisClient();
     
     // Verificar si ya existe
@@ -160,12 +219,22 @@ router.post('/', async (req, res) => {
       price: price.toString(),
       stock: stock.toString(),
       minStock: minStock.toString(),
-      expiryDate,
-      batchNumber,
       laboratory,
+      presentation,
+      saleCondition,
       createdAt: now,
       updatedAt: now,
     };
+    
+    // Agregar offer si existe
+    if (offer) {
+      product.offer = JSON.stringify(offer);
+    }
+    
+    // Agregar drugs si existen
+    if (drugs && Array.isArray(drugs) && drugs.length > 0) {
+      product.drugs = JSON.stringify(drugs);
+    }
     
     // Guardar producto
     await client.hset(REDIS_KEYS.product(code), product);
@@ -217,6 +286,24 @@ router.put('/:code', async (req, res) => {
     if (updates.price !== undefined) updates.price = updates.price.toString();
     if (updates.stock !== undefined) updates.stock = updates.stock.toString();
     if (updates.minStock !== undefined) updates.minStock = updates.minStock.toString();
+    
+    // Convertir offer a string JSON si existe
+    if (updates.offer !== undefined) {
+      if (updates.offer && typeof updates.offer === 'object') {
+        updates.offer = JSON.stringify(updates.offer);
+      } else {
+        updates.offer = null;
+      }
+    }
+    
+    // Convertir drugs a string JSON si existe
+    if (updates.drugs !== undefined) {
+      if (updates.drugs && Array.isArray(updates.drugs) && updates.drugs.length > 0) {
+        updates.drugs = JSON.stringify(updates.drugs);
+      } else {
+        updates.drugs = null;
+      }
+    }
     
     // Actualizar
     await client.hset(REDIS_KEYS.product(code), updates);
@@ -346,6 +433,64 @@ router.post('/:code/stock', async (req, res) => {
   } catch (err) {
     console.error('Error ajustando stock:', err);
     res.status(500).json({ error: 'Error al ajustar stock', details: err.message });
+  }
+});
+
+// PUT /api/products/migrate - Migrar productos existentes con nuevos campos
+router.put('/migrate', async (req, res) => {
+  let client = null;
+  try {
+    client = getRedisClient();
+    
+    let codes = await client.smembers(REDIS_KEYS.allProducts);
+    
+    let migrated = 0;
+    let errors = [];
+    
+    for (const code of codes) {
+      const product = await client.hgetall(REDIS_KEYS.product(code));
+      if (!product || Object.keys(product).length === 0) continue;
+      
+      let needsUpdate = false;
+      const updates = {};
+      
+      // Agregar presentation si no existe
+      if (!product.presentation) {
+        updates.presentation = 'comprimido'; // valor por defecto
+        needsUpdate = true;
+      }
+      
+      // Agregar saleCondition si no existe
+      if (!product.saleCondition) {
+        updates.saleCondition = 'venta-libre'; // valor por defecto
+        needsUpdate = true;
+      }
+      
+      // Agregar laboratory si no existe
+      if (!product.laboratory) {
+        updates.laboratory = 'Otro';
+        needsUpdate = true;
+      }
+      
+      if (needsUpdate) {
+        try {
+          await client.hset(REDIS_KEYS.product(code), updates);
+          migrated++;
+        } catch (err) {
+          errors.push(`Error en ${code}: ${err.message}`);
+        }
+      }
+    }
+    
+    res.json({ 
+      message: 'Migración completada',
+      migrated,
+      total: codes.length,
+      errors: errors.length > 0 ? errors : null
+    });
+  } catch (err) {
+    console.error('Error en migración:', err);
+    res.status(500).json({ error: 'Error en migración', details: err.message });
   }
 });
 

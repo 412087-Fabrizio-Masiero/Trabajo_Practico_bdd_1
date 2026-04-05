@@ -138,9 +138,8 @@ router.get('/all', async (req, res) => {
       if (product && Object.keys(product).length > 0) {
         const stock = parseInt(product.stock);
         const minStock = parseInt(product.minStock);
-        const daysUntilExpiry = calculateDaysUntilExpiry(product.expiryDate);
         
-        // Alerta de stock bajo
+        // Solo alerta de stock bajo
         if (stock <= minStock) {
           const alertSeverity = stock === 0 ? 'critical' : 'warning';
           alerts.push({
@@ -154,33 +153,13 @@ router.get('/all', async (req, res) => {
             severity: alertSeverity,
           });
         }
-        
-        // Alerta de vencimiento
-        if (daysUntilExpiry <= 30) {
-          const alertSeverity = daysUntilExpiry <= 7 ? 'critical' : 'warning';
-          const alertType = daysUntilExpiry <= 0 ? 'expired' : 'expiring_soon';
-          const message = daysUntilExpiry <= 0 
-            ? `VENCIDO desde ${product.expiryDate}`
-            : `Próximo a vencer en ${daysUntilExpiry} días (${product.expiryDate})`;
-          
-          alerts.push({
-            code: product.code,
-            name: product.name,
-            category: product.category,
-            expiryDate: product.expiryDate,
-            daysUntilExpiry,
-            message,
-            type: alertType,
-            severity: alertSeverity,
-          });
-        }
       }
     }
     
     alerts.sort((a, b) => {
       if (a.severity === 'critical' && b.severity !== 'critical') return -1;
       if (b.severity === 'critical' && a.severity !== 'critical') return 1;
-      return (a.daysUntilExpiry || 0) - (b.daysUntilExpiry || 0);
+      return a.stock - b.stock;
     });
     
     res.json({ alerts, count: alerts.length });

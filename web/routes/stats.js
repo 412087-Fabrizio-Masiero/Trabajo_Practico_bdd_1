@@ -16,14 +16,25 @@ router.get('/', async (req, res) => {
     const productCodes = await client.smembers(REDIS_KEYS.allProducts);
     const totalProducts = productCodes.length;
     
-    let totalStock = 0;
-    let totalValue = 0;
-    let lowStockCount = 0;
-    let expiringCount = 0;
-    const categoryStats = {};
+    // Obtener cantidad de reservas activas
+    const reservationCodes = await client.smembers(REDIS_KEYS.reservations);
+    let activeReservations = 0;
+    const now = new Date();
     
-    const now = Date.now();
-    const thirtyDaysFromNow = now + 30 * 24 * 60 * 60 * 1000;
+    for (const id of reservationCodes) {
+      const reservation = await client.hgetall(REDIS_KEYS.reservation(id));
+      if (reservation && reservation.status === 'active') {
+        // Verificar si no está expirada
+        const expiresAt = new Date(reservation.expiresAt);
+        if (expiresAt > now) {
+          activeReservations++;
+        }
+      }
+    }
+    
+    let totalStock = 0;
+    let lowStockCount = 0;
+    const categoryStats = {};
     
     for (const code of productCodes) {
       const product = await client.hgetall(REDIS_KEYS.product(code));
@@ -32,13 +43,10 @@ router.get('/', async (req, res) => {
         const stock = parseInt(product.stock);
         const minStock = parseInt(product.minStock);
         const price = parseFloat(product.price);
-        const expiryTimestamp = new Date(product.expiryDate).getTime();
         
         totalStock += stock;
-        totalValue += stock * price;
         
         if (stock <= minStock) lowStockCount++;
-        if (expiryTimestamp <= thirtyDaysFromNow && expiryTimestamp >= now) expiringCount++;
         
         const category = product.category;
         if (!categoryStats[category]) {
@@ -53,9 +61,8 @@ router.get('/', async (req, res) => {
     res.json({
       totalProducts,
       totalStock,
-      totalValue: Math.round(totalValue * 100) / 100,
+      totalReservations: activeReservations,
       lowStockCount,
-      expiringCount,
       categoryStats,
       timestamp: new Date().toISOString(),
     });

@@ -372,9 +372,61 @@ body {
 .product-code {
   font-size: 12px;
   color: var(--text-muted);
-  background: var(--bg);
-  padding: 2px 8px;
+  background: #f8f9fa;
+  padding: 4px 8px;
   border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  display: inline-block;
+  border: 1px dashed #6c757d;
+}
+
+.barcode-text {
+  letter-spacing: 2px;
+}
+
+.product-offer-badge {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  animation: pulse-offer 2s infinite;
+}
+
+@keyframes pulse-offer {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.product-card.has-offer {
+  border: 2px solid #ff6b6b;
+  background: linear-gradient(to bottom, rgba(255,107,107,0.05) 0%, var(--bg-card) 100%);
+}
+
+.product-original-price {
+  text-decoration: line-through;
+  color: var(--text-muted);
+  font-size: 11px;
+  margin-right: 4px;
+}
+
+.product-stat-value.offer-price {
+  color: #ff6b6b;
+  font-weight: 700;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 8px;
+}
+
+.product-header > div:first-child {
+  flex: 1;
 }
 
 .product-category {
@@ -1057,4 +1109,84 @@ body {
 
 .movements-table th:active {
   background: #cbd5e1;
+}
+
+/* Drug rows styles */
+#drugs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drug-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.drug-select {
+  flex: 2;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  font-size: 14px;
+}
+
+.drug-quantity {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Product presentation badge */
+.product-presentation {
+  font-size: 11px;
+  background: var(--primary);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+}
+
+/* Sale condition badge */
+.product-sale-condition {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  font-weight: 500;
+}
+
+.product-sale-condition.sale-libre {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.product-sale-condition.receta {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.product-sale-condition.controlado {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Drug display in product card */
+.product-drugs {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.product-drugs span {
+  background: #e0e7ff;
+  color: var(--primary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 4px;
+  font-size: 11px;
 }
