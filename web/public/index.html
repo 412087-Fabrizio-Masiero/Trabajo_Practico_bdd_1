@@ -12,12 +12,11 @@
       <div class="header-content">
         <div class="logo">
           <a href="#dashboard" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;">
-            <span class="logo-icon">🏥</span>
-            <span class="logo-text">Farmality</span>
+            <img src="https://farmaciassimilaresmx.vtexassets.com/arquivos/assets-brand-fmx-desktop-min.png" alt="Farmality" style="height: 70px;">
           </a>
         </div>
         <nav class="nav">
-          <a href="#dashboard" class="nav-link" data-view="dashboard">Dashboard</a>
+          <a href="#dashboard" class="nav-link" data-view="dashboard">Inicio</a>
           <a href="#products" class="nav-link" data-view="products">Productos</a>
           <a href="#sales" class="nav-link" data-view="sales">Ventas</a>
           <a href="#reservations" class="nav-link" data-view="reservations">Reservas</a>
@@ -32,7 +31,53 @@
     <main class="main">
       <!-- Dashboard -->
       <section id="view-dashboard" class="view">
-        <h1>Dashboard</h1>
+        <h1 style="text-align: center;">¡Bienvenido a Nuestro Sistema!</h1>
+        
+        <!-- Carrousel -->
+        <div class="carousel-container" style="position: relative; width: 100%; margin-bottom: 30px; border-radius: 12px; overflow: hidden;">
+          <div class="carousel-slides" id="carousel-slides" style="display: flex; transition: transform 0.5s ease-in-out;">
+            <img src="https://farmaciassimilaresmx.vtexassets.com/assets/vtex.file-manager-graphql/images/f2219eb9-ef1e-4fe7-b52b-009be6d0d690___8d1f390d13cc19fbcd9a52a4229b0eec.jpg" style="width: 100%; height: auto; flex-shrink: 0;" alt="Banner 1">
+            <img src="https://farmaciassimilaresmx.vtexassets.com/assets/vtex.file-manager-graphql/images/2bbcff7b-2a2a-49a9-8d6c-716bcf8a024f___abc43da4d4c2323f3f626f52a6b5e5b2.jpg" style="width: 100%; height: auto; flex-shrink: 0;" alt="Banner 2">
+            <img src="https://farmaciassimilaresmx.vtexassets.com/assets/vtex.file-manager-graphql/images/48746687-00e9-40c5-8f7d-c19f3f94015e___7f1bb9c4406e840df22ccca9468cb887.png" style="width: 100%; height: auto; flex-shrink: 0;" alt="Banner 3">
+          </div>
+          <button class="carousel-btn" onclick="moveCarousel(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 50%;">❮</button>
+          <button class="carousel-btn" onclick="moveCarousel(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 50%;">❯</button>
+          <div class="carousel-dots" id="carousel-dots" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px;"></div>
+        </div>
+        <script>
+          let currentSlide = 0;
+          const slides = document.querySelectorAll('#carousel-slides img');
+          const dotsContainer = document.getElementById('carousel-dots');
+          
+          slides.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.style.cssText = 'width: 10px; height: 10px; background: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer;';
+            dot.onclick = () => goToSlide(index);
+            dotsContainer.appendChild(dot);
+          });
+          
+          function updateCarousel() {
+            document.getElementById('carousel-slides').style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
+            const dots = dotsContainer.querySelectorAll('span');
+            dots.forEach((dot, i) => {
+              dot.style.background = i === currentSlide ? 'white' : 'rgba(255,255,255,0.5)';
+            });
+          }
+          
+          function moveCarousel(n) {
+            currentSlide = (currentSlide + n + slides.length) % slides.length;
+            updateCarousel();
+          }
+          
+          function goToSlide(n) {
+            currentSlide = n;
+            updateCarousel();
+          }
+          
+          setInterval(() => moveCarousel(1), 5000);
+          updateCarousel();
+        </script>
+        
         <div class="stats-grid">
           <div class="stat-card">
             <div class="stat-icon">📦</div>
@@ -92,6 +137,7 @@
           </select>
         </div>
         <div id="products-container" class="products-grid">Cargando...</div>
+        <div id="pagination-container" class="pagination" style="display: flex; justify-content: center; gap: 8px; margin-top: 20px;"></div>
       </section>
 
       <!-- Sales / Ventas -->
@@ -494,6 +540,10 @@
 
   <!-- Botón back to top -->
   <button class="back-to-top" id="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <footer style="text-align: center; padding: 20px; background: var(--bg-card); border-top: 1px solid var(--border); margin-top: 40px;">
+    <p style="margin: 0; color: var(--text-muted); font-size: 14px;">© 2026 FARMACIAS SIMILARES TP DATOS II</p>
+  </footer>
 
   <!-- Socket.io -->
   <script src="/socket.io/socket.io.js"></script>

@@ -6,7 +6,7 @@
 import Redis from 'ioredis';
 
 // Configuración de conexión
-const REDIS_HOST = process.env.REDIS_HOST || '172.21.162.14';
+const REDIS_HOST = process.env.REDIS_HOST || '127.0.0.1';
 const REDIS_PORT = parseInt(process.env.REDIS_PORT || '6379');
 
 const redis = new Redis({

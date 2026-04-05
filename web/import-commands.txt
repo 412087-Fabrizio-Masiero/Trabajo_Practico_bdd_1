@@ -1,0 +1,1050 @@
+HSET product:FEM0175 code "FEM0175" name "Test embarazo" description "Test embarazo de AstraZeneca" category "femenino" price "59.27" stock "60" minStock "14" expiryDate "2027-08-30" batchNumber "LOT134874" laboratory "Merck" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-04T22:47:59.630Z" offer "[object Object]"
+SADD all_products FEM0175
+SADD categories femenino
+SADD products_by_category:femenino FEM0175
+ZADD expiring_products 1819584000000 FEM0175
+HSET product:CUI0138 code "CUI0138" name "Repelente insectos" description "Repelente insectos de Sanofi" category "cuidado-personal" price "142.89" stock "78" minStock "11" expiryDate "2028-03-16" batchNumber "LOT786400" laboratory "Roche" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.728Z" offer ""
+SADD all_products CUI0138
+SADD categories cuidado-personal
+SADD products_by_category:cuidado-personal CUI0138
+ZADD expiring_products 1836777600000 CUI0138
+HSET product:ANA0014 code "ANA0014" name "Paracetamol 1g" description "Paracetamol 1g de Johnson & Johnson" category "analgesicos" price "14.41" stock "102" minStock "14" expiryDate "2027-11-27" batchNumber "LOT829076" laboratory "Abbott" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANA0014
+SADD categories analgesicos
+SADD products_by_category:analgesicos ANA0014
+ZADD expiring_products 1827273600000 ANA0014
+HSET product:OTO0165 code "OTO0165" name "Glicerina boratada" description "Glicerina boratada de Novartis" category "otorrinolaringologia" price "119.02" stock "47" minStock "9" expiryDate "2027-12-08" batchNumber "LOT887511" laboratory "Abbott" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OTO0165
+SADD categories otorrinolaringologia
+SADD products_by_category:otorrinolaringologia OTO0165
+ZADD expiring_products 1828224000000 OTO0165
+HSET product:12346 code "12346" name "1231" description "13" category "vitaminas" price "1231" stock "20" minStock "2" expiryDate "2026-05-02" batchNumber "123" laboratory "2131" presentation "comprimido" saleCondition "venta-libre" createdAt "2026-04-04T23:11:57.832Z" updatedAt "2026-04-04T23:11:57.832Z" offer "{"discount":12,"active":true}"
+SADD all_products 12346
+SADD categories vitaminas
+SADD products_by_category:vitaminas 12346
+ZADD expiring_products 1777680000000 12346
+HSET product:RES0097 code "RES0097" name "Salbutamol 100mcg" description "Salbutamol 100mcg de Bayer" category "respiratorio" price "59.16" stock "25" minStock "12" expiryDate "2026-09-21" batchNumber "LOT356457" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products RES0097
+SADD categories respiratorio
+SADD products_by_category:respiratorio RES0097
+ZADD expiring_products 1789948800000 RES0097
+HSET product:CUI0140 code "CUI0140" name "Acondicionador" description "Acondicionador de GSK" category "cuidado-personal" price "51.46" stock "12" minStock "6" expiryDate "2027-08-05" batchNumber "LOT427044" laboratory "Abbott" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CUI0140
+SADD categories cuidado-personal
+SADD products_by_category:cuidado-personal CUI0140
+ZADD expiring_products 1817424000000 CUI0140
+HSET product:CAR0072 code "CAR0072" name "Losartan 100mg" description "Losartan 100mg de Teva" category "cardiovascular" price "90.79" stock "89" minStock "5" expiryDate "2027-10-02" batchNumber "LOT903748" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CAR0072
+SADD categories cardiovascular
+SADD products_by_category:cardiovascular CAR0072
+ZADD expiring_products 1822435200000 CAR0072
+HSET product:FEM0180 code "FEM0180" name "Acido folico 5mg" description "Acido folico 5mg de Novartis" category "antibioticos" price "97.88" stock "106" minStock "7" expiryDate "2026-04-05" batchNumber "LOT890426" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T00:52:40.751Z" offer ""
+SADD all_products FEM0180
+SADD categories antibioticos
+SADD products_by_category:antibioticos FEM0180
+ZADD expiring_products 1775347200000 FEM0180
+HSET product:ANT0023 code "ANT0023" name "Levofloxacino 500mg" description "Levofloxacino 500mg de Bayer" category "antibioticos" price "79.79" stock "103" minStock "9" expiryDate "2027-07-08" batchNumber "LOT574123" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0023
+SADD categories antibioticos
+SADD products_by_category:antibioticos ANT0023
+ZADD expiring_products 1815004800000 ANT0023
+HSET product:OFT0143 code "OFT0143" name "Solucion lentes contacto" description "Solucion lentes contacto de Eli Lilly" category "oftalmico" price "147.46" stock "40" minStock "8" expiryDate "2027-07-06" batchNumber "LOT499432" laboratory "Eli Lilly" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OFT0143
+SADD categories oftalmico
+SADD products_by_category:oftalmico OFT0143
+ZADD expiring_products 1814832000000 OFT0143
+HSET product:VIT0111 code "VIT0111" name "Vitamina C 1000mg" description "Vitamina C 1000mg de Pfizer" category "vitaminas" price "114.89" stock "60" minStock "6" expiryDate "2027-11-21" batchNumber "LOT859613" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products VIT0111
+SADD categories vitaminas
+SADD products_by_category:vitaminas VIT0111
+ZADD expiring_products 1826755200000 VIT0111
+HSET product:OTO0168 code "OTO0168" name "Spray nasal descongestivo" description "Spray nasal descongestivo de AstraZeneca" category "otorrinolaringologia" price "21.51" stock "1" minStock "11" expiryDate "2026-07-10" batchNumber "LOT416354" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OTO0168
+SADD categories otorrinolaringologia
+SADD products_by_category:otorrinolaringologia OTO0168
+ZADD expiring_products 1783641600000 OTO0168
+HSET product:CAR0074 code "CAR0074" name "Amlodipino 10mg" description "Amlodipino 10mg de Roche" category "cardiovascular" price "101.5" stock "101" minStock "13" expiryDate "2027-10-25" batchNumber "LOT295945" laboratory "Abbott" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CAR0074
+SADD categories cardiovascular
+SADD products_by_category:cardiovascular CAR0074
+ZADD expiring_products 1824422400000 CAR0074
+HSET product:PED0190 code "PED0190" name "Rehidratante" description "Rehidratante de Roche" category "pediatrico" price "116.8" stock "96" minStock "14" expiryDate "2026-08-15" batchNumber "LOT713107" laboratory "Merck" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products PED0190
+SADD categories pediatrico
+SADD products_by_category:pediatrico PED0190
+ZADD expiring_products 1786752000000 PED0190
+HSET product:ANA0004 code "ANA0004" name "Ibuprofeno 600mg" description "Ibuprofeno 600mg de Takeda" category "analgesicos" price "19.85" stock "89" minStock "11" expiryDate "2028-04-28" batchNumber "LOT317935" laboratory "Bristol Myers Squibb" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANA0004
+SADD categories analgesicos
+SADD products_by_category:analgesicos ANA0004
+ZADD expiring_products 1840492800000 ANA0004
+HSET product:FEM0172 code "FEM0172" name "Suplemento prenatal" description "Suplemento prenatal de Novartis" category "femenino" price "108.39" stock "59" minStock "14" expiryDate "2027-11-06" batchNumber "LOT951075" laboratory "Bayer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products FEM0172
+SADD categories femenino
+SADD products_by_category:femenino FEM0172
+ZADD expiring_products 1825459200000 FEM0172
+HSET product:ANT0024 code "ANT0024" name "Penicilina V 500mg" description "Penicilina V 500mg de Johnson & Johnson" category "antibioticos" price "8.77" stock "66" minStock "11" expiryDate "2026-06-15" batchNumber "LOT289163" laboratory "Eli Lilly" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0024
+SADD categories antibioticos
+SADD products_by_category:antibioticos ANT0024
+ZADD expiring_products 1781481600000 ANT0024
+HSET product:RES0096 code "RES0096" name "Dextrometorfano 15mg" description "Dextrometorfano 15mg de Eli Lilly" category "respiratorio" price "64.92" stock "43" minStock "5" expiryDate "2027-03-13" batchNumber "LOT668575" laboratory "Boehringer Ingelheim" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products RES0096
+SADD categories respiratorio
+SADD products_by_category:respiratorio RES0096
+ZADD expiring_products 1804896000000 RES0096
+HSET product:PED0193 code "PED0193" name "Ibuprofeno pediatric" description "Ibuprofeno pediatric de AstraZeneca" category "pediatrico" price "82.89" stock "2" minStock "6" expiryDate "2026-05-23" batchNumber "LOT138892" laboratory "Boehringer Ingelheim" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products PED0193
+SADD categories pediatrico
+SADD products_by_category:pediatrico PED0193
+ZADD expiring_products 1779494400000 PED0193
+HSET product:GAS0063 code "GAS0063" name "Metoclopramida 10mg" description "Metoclopramida 10mg de Sanofi" category "gastrointestinal" price "123.17" stock "27" minStock "14" expiryDate "2026-04-25" batchNumber "LOT674994" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products GAS0063
+SADD categories gastrointestinal
+SADD products_by_category:gastrointestinal GAS0063
+ZADD expiring_products 1777075200000 GAS0063
+HSET product:VIT0109 code "VIT0109" name "Ferro glubionate" description "Ferro glubionate de Roche" category "vitaminas" price "53.19" stock "40" minStock "14" expiryDate "2027-09-16" batchNumber "LOT646034" laboratory "Eli Lilly" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products VIT0109
+SADD categories vitaminas
+SADD products_by_category:vitaminas VIT0109
+ZADD expiring_products 1821052800000 VIT0109
+HSET product:FEM0177 code "FEM0177" name "Gel lubricante" description "Gel lubricante de Johnson & Johnson" category "femenino" price "118.84" stock "97" minStock "9" expiryDate "2028-04-07" batchNumber "LOT941283" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products FEM0177
+SADD categories femenino
+SADD products_by_category:femenino FEM0177
+ZADD expiring_products 1838678400000 FEM0177
+HSET product:FEM0170 code "FEM0170" name "Progesterona 200mg" description "Progesterona 200mg de Boehringer Ingelheim" category "femenino" price "26.23" stock "105" minStock "8" expiryDate "2027-09-09" batchNumber "LOT763051" laboratory "Abbott" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products FEM0170
+SADD categories femenino
+SADD products_by_category:femenino FEM0170
+ZADD expiring_products 1820448000000 FEM0170
+HSET product:GAS0061 code "GAS0061" name "Ranitidina 150mg" description "Ranitidina 150mg de Boehringer Ingelheim" category "gastrointestinal" price "94.34" stock "8" minStock "5" expiryDate "2026-07-08" batchNumber "LOT167884" laboratory "Abbott" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products GAS0061
+SADD categories gastrointestinal
+SADD products_by_category:gastrointestinal GAS0061
+ZADD expiring_products 1783468800000 GAS0061
+HSET product:OTO0155 code "OTO0155" name "Spray nasal physiologic" description "Spray nasal physiologic de Merck" category "otorrinolaringologia" price "64.37" stock "27" minStock "7" expiryDate "2026-12-07" batchNumber "LOT338044" laboratory "Merck" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OTO0155
+SADD categories otorrinolaringologia
+SADD products_by_category:otorrinolaringologia OTO0155
+ZADD expiring_products 1796601600000 OTO0155
+HSET product:PED0191 code "PED0191" name "Crema pañal" description "Crema pañal de Bristol Myers Squibb" category "pediatrico" price "51.57" stock "110" minStock "14" expiryDate "2028-03-15" batchNumber "LOT859468" laboratory "Roche" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products PED0191
+SADD categories pediatrico
+SADD products_by_category:pediatrico PED0191
+ZADD expiring_products 1836691200000 PED0191
+HSET product:ANT0026 code "ANT0026" name "Eritromicina 500mg" description "Eritromicina 500mg de Merck" category "antibioticos" price "37.68" stock "37" minStock "14" expiryDate "2027-09-04" batchNumber "LOT504835" laboratory "Johnson & Johnson" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0026
+SADD categories antibioticos
+SADD products_by_category:antibioticos ANT0026
+ZADD expiring_products 1820016000000 ANT0026
+HSET product:GAS0068 code "GAS0068" name "Enantyum 25mg" description "Enantyum 25mg de Teva" category "gastrointestinal" price "32.88" stock "9" minStock "9" expiryDate "2027-07-24" batchNumber "LOT800981" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products GAS0068
+SADD categories gastrointestinal
+SADD products_by_category:gastrointestinal GAS0068
+ZADD expiring_products 1816387200000 GAS0068
+HSET product:FEM0171 code "FEM0171" name "Acido folico 5mg" description "Acido folico 5mg de Roche" category "femenino" price "10.09" stock "29" minStock "12" expiryDate "2026-04-08" batchNumber "LOT544788" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products FEM0171
+SADD categories femenino
+SADD products_by_category:femenino FEM0171
+ZADD expiring_products 1775606400000 FEM0171
+HSET product:FEM0178 code "FEM0178" name "Anticonceptivos orales" description "Anticonceptivos orales de Novartis" category "femenino" price "21.92" stock "65" minStock "14" expiryDate "2026-04-22" batchNumber "LOT815856" laboratory "Bristol Myers Squibb" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products FEM0178
+SADD categories femenino
+SADD products_by_category:femenino FEM0178
+ZADD expiring_products 1776816000000 FEM0178
+HSET product:SUP0121 code "SUP0121" name "CoQ10 100mg" description "CoQ10 100mg de GSK" category "suplementos" price "26.22" stock "88" minStock "5" expiryDate "2027-06-11" batchNumber "LOT557820" laboratory "Johnson & Johnson" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products SUP0121
+SADD categories suplementos
+SADD products_by_category:suplementos SUP0121
+ZADD expiring_products 1812672000000 SUP0121
+HSET product:ANT0042 code "ANT0042" name "Ketoprofeno 50mg" description "Ketoprofeno 50mg de AstraZeneca" category "antiflamatorios" price "146.62" stock "25" minStock "13" expiryDate "2027-01-29" batchNumber "LOT866827" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0042
+SADD categories antiflamatorios
+SADD products_by_category:antiflamatorios ANT0042
+ZADD expiring_products 1801180800000 ANT0042
+HSET product:VIT0105 code "VIT0105" name "Vitamina E 400mg" description "Vitamina E 400mg de Roche" category "vitaminas" price "53.61" stock "2" minStock "14" expiryDate "2026-09-03" batchNumber "LOT963688" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products VIT0105
+SADD categories vitaminas
+SADD products_by_category:vitaminas VIT0105
+ZADD expiring_products 1788393600000 VIT0105
+HSET product:CUI0131 code "CUI0131" name "Enjuague bucal" description "Enjuague bucal de Novartis" category "cuidado-personal" price "90.3" stock "53" minStock "8" expiryDate "2028-02-23" batchNumber "LOT307860" laboratory "Bristol Myers Squibb" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CUI0131
+SADD categories cuidado-personal
+SADD products_by_category:cuidado-personal CUI0131
+ZADD expiring_products 1834876800000 CUI0131
+HSET product:ANT0025 code "ANT0025" name "Sulfametoxazol 800mg" description "Sulfametoxazol 800mg de AstraZeneca" category "antibioticos" price "62.7" stock "22" minStock "10" expiryDate "2026-04-05" batchNumber "LOT233226" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0025
+SADD categories antibioticos
+SADD products_by_category:antibioticos ANT0025
+ZADD expiring_products 1775347200000 ANT0025
+HSET product:ANT0037 code "ANT0037" name "Celecoxib 200mg" description "Celecoxib 200mg de Merck" category "antiflamatorios" price "29.26" stock "74" minStock "10" expiryDate "2027-12-12" batchNumber "LOT494922" laboratory "Abbott" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0037
+SADD categories antiflamatorios
+SADD products_by_category:antiflamatorios ANT0037
+ZADD expiring_products 1828569600000 ANT0037
+HSET product:VIT0106 code "VIT0106" name "Vitamina K2 100mcg" description "Vitamina K2 100mcg de Pfizer" category "vitaminas" price "111.53" stock "13" minStock "14" expiryDate "2026-09-25" batchNumber "LOT203536" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products VIT0106
+SADD categories vitaminas
+SADD products_by_category:vitaminas VIT0106
+ZADD expiring_products 1790294400000 VIT0106
+HSET product:OFT0145 code "OFT0145" name "Polimixina B gotas" description "Polimixina B gotas de Roche" category "oftalmico" price "72.73" stock "106" minStock "11" expiryDate "2026-08-18" batchNumber "LOT665273" laboratory "Bristol Myers Squibb" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OFT0145
+SADD categories oftalmico
+SADD products_by_category:oftalmico OFT0145
+ZADD expiring_products 1787011200000 OFT0145
+HSET product:VIT0100 code "VIT0100" name "Vitamina D3 1000UI" description "Vitamina D3 1000UI de GSK" category "vitaminas" price "142.22" stock "35" minStock "14" expiryDate "2027-05-28" batchNumber "LOT689825" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products VIT0100
+SADD categories vitaminas
+SADD products_by_category:vitaminas VIT0100
+ZADD expiring_products 1811462400000 VIT0100
+HSET product:SUP0115 code "SUP0115" name "Glucosamina 1500mg" description "Glucosamina 1500mg de Sanofi" category "suplementos" price "115.58" stock "49" minStock "14" expiryDate "2027-04-10" batchNumber "LOT204627" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products SUP0115
+SADD categories suplementos
+SADD products_by_category:suplementos SUP0115
+ZADD expiring_products 1807315200000 SUP0115
+HSET product:OFT0144 code "OFT0144" name "Tobramicina gotas" description "Tobramicina gotas de Pfizer" category "oftalmico" price "100.88" stock "86" minStock "14" expiryDate "2027-07-26" batchNumber "LOT565901" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OFT0144
+SADD categories oftalmico
+SADD products_by_category:oftalmico OFT0144
+ZADD expiring_products 1816560000000 OFT0144
+HSET product:ANT0032 code "ANT0032" name "Ketoprofeno 50mg" description "Ketoprofeno 50mg de Takeda" category "antiflamatorios" price "92.75" stock "29" minStock "11" expiryDate "2028-04-08" batchNumber "LOT124531" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0032
+SADD categories antiflamatorios
+SADD products_by_category:antiflamatorios ANT0032
+ZADD expiring_products 1838764800000 ANT0032
+HSET product:DER0054 code "DER0054" name "Locion corporal" description "Locion corporal de Abbott" category "dermocosmetica" price "71.83" stock "89" minStock "6" expiryDate "2026-08-14" batchNumber "LOT175774" laboratory "Bayer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DER0054
+SADD categories dermocosmetica
+SADD products_by_category:dermocosmetica DER0054
+ZADD expiring_products 1786665600000 DER0054
+HSET product:ANA0002 code "ANA0002" name "Paracetamol 1g" description "Paracetamol 1g de Abbott" category "analgesicos" price "37.93" stock "21" minStock "8" expiryDate "2028-02-03" batchNumber "LOT180866" laboratory "Takeda" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANA0002
+SADD categories analgesicos
+SADD products_by_category:analgesicos ANA0002
+ZADD expiring_products 1833148800000 ANA0002
+HSET product:ANA0001 code "ANA0001" name "Paracetamol 500mg" description "Paracetamol 500mg de Boehringer Ingelheim" category "analgesicos" price "52.53" stock "76" minStock "5" expiryDate "2027-01-06" batchNumber "LOT903485" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer "{active:false,discount:0}"
+SADD all_products ANA0001
+SADD categories analgesicos
+SADD products_by_category:analgesicos ANA0001
+ZADD expiring_products 1799193600000 ANA0001
+HSET product:SUP0114 code "SUP0114" name "Omega-3 2000mg" description "Omega-3 2000mg de Sanofi" category "suplementos" price "123.92" stock "30" minStock "10" expiryDate "2027-01-11" batchNumber "LOT444781" laboratory "Boehringer Ingelheim" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products SUP0114
+SADD categories suplementos
+SADD products_by_category:suplementos SUP0114
+ZADD expiring_products 1799625600000 SUP0114
+HSET product:DER0043 code "DER0043" name "Crema hydratante corporal" description "Crema hydratante corporal de Bayer" category "dermocosmetica" price "116.25" stock "77" minStock "7" expiryDate "2026-08-17" batchNumber "LOT441124" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DER0043
+SADD categories dermocosmetica
+SADD products_by_category:dermocosmetica DER0043
+ZADD expiring_products 1786924800000 DER0043
+HSET product:CAR0075 code "CAR0075" name "Enalapril 10mg" description "Enalapril 10mg de Teva" category "cardiovascular" price "113.21" stock "92" minStock "10" expiryDate "2027-06-12" batchNumber "LOT252797" laboratory "Eli Lilly" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CAR0075
+SADD categories cardiovascular
+SADD products_by_category:cardiovascular CAR0075
+ZADD expiring_products 1812758400000 CAR0075
+HSET product:RES0090 code "RES0090" name "Desloratadina 5mg" description "Desloratadina 5mg de Merck" category "respiratorio" price "84.12" stock "6" minStock "12" expiryDate "2026-04-17" batchNumber "LOT242378" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products RES0090
+SADD categories respiratorio
+SADD products_by_category:respiratorio RES0090
+ZADD expiring_products 1776384000000 RES0090
+HSET product:OFFER2026 code "OFFER2026" name "Nuevo Producto 2026" description "Test de nueva oferta" category "vitaminas" price "120" stock "30" minStock "8" expiryDate "2028-01-01" batchNumber "LOT2026" laboratory "Roche" presentation "comprimido" saleCondition "venta-libre" createdAt "2026-04-04T23:06:32.252Z" updatedAt "2026-04-04T23:06:32.252Z" offer ""
+SADD all_products OFFER2026
+SADD categories vitaminas
+SADD products_by_category:vitaminas OFFER2026
+ZADD expiring_products 1830297600000 OFFER2026
+HSET product:OFT0148 code "OFT0148" name "Olopatadina gotas" description "Olopatadina gotas de Teva" category "oftalmico" price "137.54" stock "12" minStock "11" expiryDate "2027-12-22" batchNumber "LOT990309" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OFT0148
+SADD categories oftalmico
+SADD products_by_category:oftalmico OFT0148
+ZADD expiring_products 1829433600000 OFT0148
+HSET product:OFT0147 code "OFT0147" name "Tetrizolina gotas" description "Tetrizolina gotas de Takeda" category "oftalmico" price "49.41" stock "46" minStock "13" expiryDate "2027-08-21" batchNumber "LOT970473" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OFT0147
+SADD categories oftalmico
+SADD products_by_category:oftalmico OFT0147
+ZADD expiring_products 1818806400000 OFT0147
+HSET product:GAS0070 code "GAS0070" name "Omeprazol 40mg" description "Omeprazol 40mg de Bayer" category "gastrointestinal" price "5.28" stock "9" minStock "13" expiryDate "2028-01-07" batchNumber "LOT728940" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products GAS0070
+SADD categories gastrointestinal
+SADD products_by_category:gastrointestinal GAS0070
+ZADD expiring_products 1830816000000 GAS0070
+HSET product:CUI0136 code "CUI0136" name "Curitas" description "Curitas de Roche" category "cuidado-personal" price "117.54" stock "30" minStock "7" expiryDate "2027-09-16" batchNumber "LOT730202" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CUI0136
+SADD categories cuidado-personal
+SADD products_by_category:cuidado-personal CUI0136
+ZADD expiring_products 1821052800000 CUI0136
+HSET product:ANT0041 code "ANT0041" name "Naproxeno 500mg" description "Naproxeno 500mg de Boehringer Ingelheim" category "antiflamatorios" price "129.14" stock "58" minStock "12" expiryDate "2027-08-19" batchNumber "LOT897997" laboratory "Eli Lilly" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0041
+SADD categories antiflamatorios
+SADD products_by_category:antiflamatorios ANT0041
+ZADD expiring_products 1818633600000 ANT0041
+HSET product:PED0195 code "PED0195" name "Azitromicina suspension" description "Azitromicina suspension de Roche" category "pediatrico" price "135.52" stock "34" minStock "13" expiryDate "2026-09-24" batchNumber "LOT648216" laboratory "Boehringer Ingelheim" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products PED0195
+SADD categories pediatrico
+SADD products_by_category:pediatrico PED0195
+ZADD expiring_products 1790208000000 PED0195
+HSET product:ANT0027 code "ANT0027" name "Amoxicilina 500mg" description "Amoxicilina 500mg de GSK" category "antibioticos" price "9.78" stock "88" minStock "14" expiryDate "2026-05-31" batchNumber "LOT740542" laboratory "Roche" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0027
+SADD categories antibioticos
+SADD products_by_category:antibioticos ANT0027
+ZADD expiring_products 1780185600000 ANT0027
+HSET product:DER0051 code "DER0051" name "Mascarilla facial" description "Mascarilla facial de Eli Lilly" category "dermocosmetica" price "55.15" stock "16" minStock "14" expiryDate "2026-04-30" batchNumber "LOT433025" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DER0051
+SADD categories dermocosmetica
+SADD products_by_category:dermocosmetica DER0051
+ZADD expiring_products 1777507200000 DER0051
+HSET product:SUP0117 code "SUP0117" name "Creatina 5g" description "Creatina 5g de Takeda" category "suplementos" price "10.71" stock "109" minStock "11" expiryDate "2027-05-25" batchNumber "LOT526428" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products SUP0117
+SADD categories suplementos
+SADD products_by_category:suplementos SUP0117
+ZADD expiring_products 1811203200000 SUP0117
+HSET product:CUI0135 code "CUI0135" name "Vendas" description "Vendas de Merck" category "cuidado-personal" price "42.75" stock "58" minStock "5" expiryDate "2027-08-12" batchNumber "LOT887640" laboratory "Bristol Myers Squibb" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CUI0135
+SADD categories cuidado-personal
+SADD products_by_category:cuidado-personal CUI0135
+ZADD expiring_products 1818028800000 CUI0135
+HSET product:FEM0176 code "FEM0176" name "Preservativos" description "Preservativos de Boehringer Ingelheim" category "femenino" price "36.52" stock "50" minStock "14" expiryDate "2027-01-01" batchNumber "LOT807446" laboratory "Bristol Myers Squibb" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products FEM0176
+SADD categories femenino
+SADD products_by_category:femenino FEM0176
+ZADD expiring_products 1798761600000 FEM0176
+HSET product:SUP0116 code "SUP0116" name "Condroitina 1200mg" description "Condroitina 1200mg de Eli Lilly" category "suplementos" price "115.36" stock "44" minStock "10" expiryDate "2026-05-02" batchNumber "LOT146171" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products SUP0116
+SADD categories suplementos
+SADD products_by_category:suplementos SUP0116
+ZADD expiring_products 1777680000000 SUP0116
+HSET product:RES0087 code "RES0087" name "Fluticasona 125mcg" description "Fluticasona 125mcg de AstraZeneca" category "respiratorio" price "63.24" stock "4" minStock "5" expiryDate "2027-09-09" batchNumber "LOT405795" laboratory "Bayer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products RES0087
+SADD categories respiratorio
+SADD products_by_category:respiratorio RES0087
+ZADD expiring_products 1820448000000 RES0087
+HSET product:ANT0031 code "ANT0031" name "Naproxeno 500mg" description "Naproxeno 500mg de Teva" category "antiflamatorios" price "105.48" stock "74" minStock "12" expiryDate "2027-03-06" batchNumber "LOT612640" laboratory "Takeda" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0031
+SADD categories antiflamatorios
+SADD products_by_category:antiflamatorios ANT0031
+ZADD expiring_products 1804291200000 ANT0031
+HSET product:CAR0083 code "CAR0083" name "Losartan 50mg" description "Losartan 50mg de AstraZeneca" category "cardiovascular" price "108.36" stock "103" minStock "10" expiryDate "2026-07-26" batchNumber "LOT836113" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CAR0083
+SADD categories cardiovascular
+SADD products_by_category:cardiovascular CAR0083
+ZADD expiring_products 1785024000000 CAR0083
+HSET product:OTO0167 code "OTO0167" name "Spray nasal physiologic" description "Spray nasal physiologic de Roche" category "otorrinolaringologia" price "54.39" stock "20" minStock "9" expiryDate "2026-11-20" batchNumber "LOT986662" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OTO0167
+SADD categories otorrinolaringologia
+SADD products_by_category:otorrinolaringologia OTO0167
+ZADD expiring_products 1795132800000 OTO0167
+HSET product:GAS0065 code "GAS0065" name "Loperamida 2mg" description "Loperamida 2mg de Sanofi" category "gastrointestinal" price "137" stock "69" minStock "12" expiryDate "2027-08-19" batchNumber "LOT652913" laboratory "Boehringer Ingelheim" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products GAS0065
+SADD categories gastrointestinal
+SADD products_by_category:gastrointestinal GAS0065
+ZADD expiring_products 1818633600000 GAS0065
+HSET product:ANA0006 code "ANA0006" name "Dipirona 500mg" description "Dipirona 500mg de Roche" category "analgesicos" price "6.86" stock "22" minStock "12" expiryDate "2027-04-11" batchNumber "LOT885884" laboratory "Bristol Myers Squibb" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANA0006
+SADD categories analgesicos
+SADD products_by_category:analgesicos ANA0006
+ZADD expiring_products 1807401600000 ANA0006
+HSET product:GAS0066 code "GAS0066" name "Simeticona 125mg" description "Simeticona 125mg de Bristol Myers Squibb" category "gastrointestinal" price "129.93" stock "48" minStock "10" expiryDate "2026-06-14" batchNumber "LOT229891" laboratory "Johnson & Johnson" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products GAS0066
+SADD categories gastrointestinal
+SADD products_by_category:gastrointestinal GAS0066
+ZADD expiring_products 1781395200000 GAS0066
+HSET product:ANT0039 code "ANT0039" name "Ibuprofeno 400mg" description "Ibuprofeno 400mg de GSK" category "antiflamatorios" price "109.52" stock "4" minStock "13" expiryDate "2026-10-25" batchNumber "LOT450714" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0039
+SADD categories antiflamatorios
+SADD products_by_category:antiflamatorios ANT0039
+ZADD expiring_products 1792886400000 ANT0039
+HSET product:ANA0013 code "ANA0013" name "Paracetamol 500mg" description "Paracetamol 500mg de Sanofi" category "analgesicos" price "33.56" stock "23" minStock "12" expiryDate "2027-03-31" batchNumber "LOT204136" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANA0013
+SADD categories analgesicos
+SADD products_by_category:analgesicos ANA0013
+ZADD expiring_products 1806451200000 ANA0013
+HSET product:SUP0122 code "SUP0122" name "Melatonina 1mg" description "Melatonina 1mg de Pfizer" category "suplementos" price "48.42" stock "46" minStock "9" expiryDate "2026-08-30" batchNumber "LOT850756" laboratory "AstraZeneca" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products SUP0122
+SADD categories suplementos
+SADD products_by_category:suplementos SUP0122
+ZADD expiring_products 1788048000000 SUP0122
+HSET product:ANT0016 code "ANT0016" name "Amoxicilina 875mg" description "Amoxicilina 875mg de GSK" category "antibioticos" price "121.54" stock "91" minStock "6" expiryDate "2027-08-30" batchNumber "LOT897829" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0016
+SADD categories antibioticos
+SADD products_by_category:antibioticos ANT0016
+ZADD expiring_products 1819584000000 ANT0016
+HSET product:RES0088 code "RES0088" name "Cetirizina 10mg" description "Cetirizina 10mg de Sanofi" category "respiratorio" price "23.82" stock "16" minStock "10" expiryDate "2027-11-26" batchNumber "LOT925219" laboratory "Bayer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products RES0088
+SADD categories respiratorio
+SADD products_by_category:respiratorio RES0088
+ZADD expiring_products 1827187200000 RES0088
+HSET product:CUI0130 code "CUI0130" name "Crema dental" description "Crema dental de Teva" category "cuidado-personal" price "127.61" stock "74" minStock "8" expiryDate "2027-11-25" batchNumber "LOT151728" laboratory "AstraZeneca" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CUI0130
+SADD categories cuidado-personal
+SADD products_by_category:cuidado-personal CUI0130
+ZADD expiring_products 1827100800000 CUI0130
+HSET product:DER0049 code "DER0049" name "Gel limpiador facial" description "Gel limpiador facial de AstraZeneca" category "dermocosmetica" price "17.63" stock "49" minStock "10" expiryDate "2026-10-09" batchNumber "LOT535684" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DER0049
+SADD categories dermocosmetica
+SADD products_by_category:dermocosmetica DER0049
+ZADD expiring_products 1791504000000 DER0049
+HSET product:ANT0029 code "ANT0029" name "Ibuprofeno 400mg" description "Ibuprofeno 400mg de Teva" category "antiflamatorios" price "117.06" stock "103" minStock "5" expiryDate "2026-07-13" batchNumber "LOT987934" laboratory "Roche" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0029
+SADD categories antiflamatorios
+SADD products_by_category:antiflamatorios ANT0029
+ZADD expiring_products 1783900800000 ANT0029
+HSET product:1231231 code "1231231" name "vimax" description "tratamiento" category "cardiovascular" price "121" stock "19" minStock "1" expiryDate "2026-04-11" batchNumber "21312" laboratory "roemmers" presentation "comprimido" saleCondition "venta-libre" createdAt "2026-04-04T22:35:19.589Z" updatedAt "2026-04-04T22:35:19.589Z" offer ""
+SADD all_products 1231231
+SADD categories cardiovascular
+SADD products_by_category:cardiovascular 1231231
+ZADD expiring_products 1775865600000 1231231
+HSET product:OTO0158 code "OTO0158" name "Agua oxigenada" description "Agua oxigenada de Bristol Myers Squibb" category "otorrinolaringologia" price "132.28" stock "99" minStock "8" expiryDate "2027-08-26" batchNumber "LOT602351" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OTO0158
+SADD categories otorrinolaringologia
+SADD products_by_category:otorrinolaringologia OTO0158
+ZADD expiring_products 1819238400000 OTO0158
+HSET product:123456 code "123456" name "geniol" description "dolor de cabeza" category "analgesicos" price "2000" stock "30" minStock "2" expiryDate "2026-04-18" batchNumber "2134" laboratory "elea" presentation "comprimido" saleCondition "venta-libre" createdAt "2026-04-04T22:41:56.725Z" updatedAt "2026-04-04T22:41:56.725Z" offer ""
+SADD all_products 123456
+SADD categories analgesicos
+SADD products_by_category:analgesicos 123456
+ZADD expiring_products 1776470400000 123456
+HSET product:RES0086 code "RES0086" name "Budesonida 100mcg" description "Budesonida 100mcg de Teva" category "respiratorio" price "112.63" stock "45" minStock "7" expiryDate "2027-12-22" batchNumber "LOT528767" laboratory "Johnson & Johnson" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products RES0086
+SADD categories respiratorio
+SADD products_by_category:respiratorio RES0086
+ZADD expiring_products 1829433600000 RES0086
+HSET product:VIT0107 code "VIT0107" name "Acido folico 5mg" description "Acido folico 5mg de Abbott" category "vitaminas" price "93.47" stock "19" minStock "13" expiryDate "2027-06-19" batchNumber "LOT303033" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products VIT0107
+SADD categories vitaminas
+SADD products_by_category:vitaminas VIT0107
+ZADD expiring_products 1813363200000 VIT0107
+HSET product:DER0046 code "DER0046" name "Tratamiento acne" description "Tratamiento acne de Eli Lilly" category "dermocosmetica" price "37.52" stock "10" minStock "13" expiryDate "2027-11-09" batchNumber "LOT967399" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DER0046
+SADD categories dermocosmetica
+SADD products_by_category:dermocosmetica DER0046
+ZADD expiring_products 1825718400000 DER0046
+HSET product:CUI0129 code "CUI0129" name "Jabon antibacterial" description "Jabon antibacterial de Sanofi" category "cuidado-personal" price "69.26" stock "27" minStock "5" expiryDate "2026-07-09" batchNumber "LOT867683" laboratory "Bayer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CUI0129
+SADD categories cuidado-personal
+SADD products_by_category:cuidado-personal CUI0129
+ZADD expiring_products 1783555200000 CUI0129
+HSET product:PED0194 code "PED0194" name "Amoxicilina suspension" description "Amoxicilina suspension de Novartis" category "pediatrico" price "102.01" stock "37" minStock "13" expiryDate "2027-11-20" batchNumber "LOT296386" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products PED0194
+SADD categories pediatrico
+SADD products_by_category:pediatrico PED0194
+ZADD expiring_products 1826668800000 PED0194
+HSET product:FEM0181 code "FEM0181" name "Suplemento prenatal" description "Suplemento prenatal de Novartis" category "femenino" price "50.33" stock "65" minStock "8" expiryDate "2026-06-14" batchNumber "LOT736610" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products FEM0181
+SADD categories femenino
+SADD products_by_category:femenino FEM0181
+ZADD expiring_products 1781395200000 FEM0181
+HSET product:ANA0010 code "ANA0010" name "Morfina 10mg" description "Morfina 10mg de Abbott" category "analgesicos" price "16.09" stock "23" minStock "11" expiryDate "2026-10-16" batchNumber "LOT426671" laboratory "Bristol Myers Squibb" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANA0010
+SADD categories analgesicos
+SADD products_by_category:analgesicos ANA0010
+ZADD expiring_products 1792108800000 ANA0010
+HSET product:OTO0156 code "OTO0156" name "Spray nasal descongestivo" description "Spray nasal descongestivo de Teva" category "otorrinolaringologia" price "132.46" stock "27" minStock "8" expiryDate "2028-04-30" batchNumber "LOT706370" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OTO0156
+SADD categories otorrinolaringologia
+SADD products_by_category:otorrinolaringologia OTO0156
+ZADD expiring_products 1840665600000 OTO0156
+HSET product:GAS0059 code "GAS0059" name "Pantoprazol 40mg" description "Pantoprazol 40mg de Bristol Myers Squibb" category "gastrointestinal" price "57.99" stock "48" minStock "5" expiryDate "2027-10-21" batchNumber "LOT423033" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products GAS0059
+SADD categories gastrointestinal
+SADD products_by_category:gastrointestinal GAS0059
+ZADD expiring_products 1824076800000 GAS0059
+HSET product:SUP0113 code "SUP0113" name "Omega-3 1000mg" description "Omega-3 1000mg de Eli Lilly" category "suplementos" price "62.19" stock "11" minStock "8" expiryDate "2028-02-11" batchNumber "LOT506837" laboratory "Johnson & Johnson" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products SUP0113
+SADD categories suplementos
+SADD products_by_category:suplementos SUP0113
+ZADD expiring_products 1833840000000 SUP0113
+HSET product:GAS0067 code "GAS0067" name "Buscapina 10mg" description "Buscapina 10mg de Merck" category "gastrointestinal" price "94.48" stock "94" minStock "8" expiryDate "2026-11-06" batchNumber "LOT889393" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products GAS0067
+SADD categories gastrointestinal
+SADD products_by_category:gastrointestinal GAS0067
+ZADD expiring_products 1793923200000 GAS0067
+HSET product:DER0044 code "DER0044" name "Protector solar SPF 50" description "Protector solar SPF 50 de Bristol Myers Squibb" category "dermocosmetica" price "39.42" stock "92" minStock "8" expiryDate "2027-03-09" batchNumber "LOT144272" laboratory "Johnson & Johnson" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DER0044
+SADD categories dermocosmetica
+SADD products_by_category:dermocosmetica DER0044
+ZADD expiring_products 1804550400000 DER0044
+HSET product:CAR0073 code "CAR0073" name "Amlodipino 5mg" description "Amlodipino 5mg de Roche" category "cardiovascular" price "105.06" stock "81" minStock "11" expiryDate "2026-04-26" batchNumber "LOT544069" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CAR0073
+SADD categories cardiovascular
+SADD products_by_category:cardiovascular CAR0073
+ZADD expiring_products 1777161600000 CAR0073
+HSET product:CAR0076 code "CAR0076" name "Captopril 25mg" description "Captopril 25mg de Pfizer" category "cardiovascular" price "11.47" stock "6" minStock "9" expiryDate "2027-10-02" batchNumber "LOT726291" laboratory "Abbott" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CAR0076
+SADD categories cardiovascular
+SADD products_by_category:cardiovascular CAR0076
+ZADD expiring_products 1822435200000 CAR0076
+HSET product:DER0055 code "DER0055" name "Crema hydratante corporal" description "Crema hydratante corporal de Novartis" category "dermocosmetica" price "112.24" stock "31" minStock "13" expiryDate "2027-07-22" batchNumber "LOT143456" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DER0055
+SADD categories dermocosmetica
+SADD products_by_category:dermocosmetica DER0055
+ZADD expiring_products 1816214400000 DER0055
+HSET product:CAR0080 code "CAR0080" name "Atorvastatina 40mg" description "Atorvastatina 40mg de Merck" category "cardiovascular" price "136.82" stock "103" minStock "9" expiryDate "2027-07-23" batchNumber "LOT537816" laboratory "Takeda" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T00:16:11.325Z" offer ""
+SADD all_products CAR0080
+SADD categories cardiovascular
+SADD products_by_category:cardiovascular CAR0080
+ZADD expiring_products 1816300800000 CAR0080
+HSET product:GAS0058 code "GAS0058" name "Omeprazol 40mg" description "Omeprazol 40mg de GSK" category "gastrointestinal" price "106.3" stock "50" minStock "12" expiryDate "2026-09-14" batchNumber "LOT208641" laboratory "AstraZeneca" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products GAS0058
+SADD categories gastrointestinal
+SADD products_by_category:gastrointestinal GAS0058
+ZADD expiring_products 1789344000000 GAS0058
+HSET product:CAR0077 code "CAR0077" name "Hidroclorotiazida 25mg" description "Hidroclorotiazida 25mg de GSK" category "cardiovascular" price "33.93" stock "33" minStock "8" expiryDate "2027-07-20" batchNumber "LOT564072" laboratory "Boehringer Ingelheim" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CAR0077
+SADD categories cardiovascular
+SADD products_by_category:cardiovascular CAR0077
+ZADD expiring_products 1816041600000 CAR0077
+HSET product:OFT0146 code "OFT0146" name "Dexametasona gotas" description "Dexametasona gotas de Bayer" category "oftalmico" price "30.8" stock "38" minStock "12" expiryDate "2027-07-31" batchNumber "LOT175655" laboratory "AstraZeneca" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OFT0146
+SADD categories oftalmico
+SADD products_by_category:oftalmico OFT0146
+ZADD expiring_products 1816992000000 OFT0146
+HSET product:RES0093 code "RES0093" name "Carbocisteina 375mg" description "Carbocisteina 375mg de AstraZeneca" category "respiratorio" price "59.51" stock "8" minStock "13" expiryDate "2027-01-11" batchNumber "LOT186031" laboratory "Takeda" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products RES0093
+SADD categories respiratorio
+SADD products_by_category:respiratorio RES0093
+ZADD expiring_products 1799625600000 RES0093
+HSET product:PROMO001 code "PROMO001" name "Producto con Oferta" description "Producto de prueba con promoción" category "analgesicos" price "50" stock "100" minStock "10" expiryDate "2027-12-31" batchNumber "LOT123456" laboratory "Bayer" presentation "comprimido" saleCondition "venta-libre" createdAt "2026-04-04T22:26:22.651Z" updatedAt "2026-04-04T22:26:22.651Z" offer "{discount:25,active:true}"
+SADD all_products PROMO001
+SADD categories analgesicos
+SADD products_by_category:analgesicos PROMO001
+ZADD expiring_products 1830211200000 PROMO001
+HSET product:ANT0022 code "ANT0022" name "Doxiciclina 100mg" description "Doxiciclina 100mg de Roche" category "antibioticos" price "66.83" stock "107" minStock "10" expiryDate "2027-05-21" batchNumber "LOT736287" laboratory "Johnson & Johnson" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0022
+SADD categories antibioticos
+SADD products_by_category:antibioticos ANT0022
+ZADD expiring_products 1810857600000 ANT0022
+HSET product:ANT0018 code "ANT0018" name "Ciprofloxacino 500mg" description "Ciprofloxacino 500mg de Merck" category "antibioticos" price "143.63" stock "96" minStock "6" expiryDate "2026-12-09" batchNumber "LOT602957" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0018
+SADD categories antibioticos
+SADD products_by_category:antibioticos ANT0018
+ZADD expiring_products 1796774400000 ANT0018
+HSET product:SUP0118 code "SUP0118" name "Magnesio 300mg" description "Magnesio 300mg de Eli Lilly" category "suplementos" price "69.12" stock "76" minStock "5" expiryDate "2026-04-28" batchNumber "LOT170195" laboratory "Takeda" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products SUP0118
+SADD categories suplementos
+SADD products_by_category:suplementos SUP0118
+ZADD expiring_products 1777334400000 SUP0118
+HSET product:VIT0101 code "VIT0101" name "Vitamina D3 4000UI" description "Vitamina D3 4000UI de Pfizer" category "vitaminas" price "93.99" stock "63" minStock "11" expiryDate "2027-03-22" batchNumber "LOT452012" laboratory "Bristol Myers Squibb" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer "{discount:20,active:true}"
+SADD all_products VIT0101
+SADD categories vitaminas
+SADD products_by_category:vitaminas VIT0101
+ZADD expiring_products 1805673600000 VIT0101
+HSET product:DER0053 code "DER0053" name "Crema manos" description "Crema manos de Boehringer Ingelheim" category "dermocosmetica" price "122.16" stock "23" minStock "5" expiryDate "2027-02-01" batchNumber "LOT443113" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DER0053
+SADD categories dermocosmetica
+SADD products_by_category:dermocosmetica DER0053
+ZADD expiring_products 1801440000000 DER0053
+HSET product:ANT0021 code "ANT0021" name "Metronidazol 500mg" description "Metronidazol 500mg de Boehringer Ingelheim" category "antibioticos" price "139.86" stock "1" minStock "7" expiryDate "2027-10-24" batchNumber "LOT416731" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0021
+SADD categories antibioticos
+SADD products_by_category:antibioticos ANT0021
+ZADD expiring_products 1824336000000 ANT0021
+HSET product:CUI0133 code "CUI0133" name "Algodon" description "Algodon de Roche" category "cuidado-personal" price "12.71" stock "7" minStock "13" expiryDate "2027-02-28" batchNumber "LOT557776" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CUI0133
+SADD categories cuidado-personal
+SADD products_by_category:cuidado-personal CUI0133
+ZADD expiring_products 1803772800000 CUI0133
+HSET product:PED0185 code "PED0185" name "Amoxicilina suspension" description "Amoxicilina suspension de GSK" category "pediatrico" price "18.17" stock "4" minStock "13" expiryDate "2027-08-17" batchNumber "LOT940772" laboratory "Roche" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products PED0185
+SADD categories pediatrico
+SADD products_by_category:pediatrico PED0185
+ZADD expiring_products 1818460800000 PED0185
+HSET product:DIE0197 code "DIE0197" name "Edulcorante" description "Edulcorante de Abbott" category "dieteticos" price "57.72" stock "70" minStock "10" expiryDate "2028-03-26" batchNumber "LOT370858" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DIE0197
+SADD categories dieteticos
+SADD products_by_category:dieteticos DIE0197
+ZADD expiring_products 1837641600000 DIE0197
+HSET product:FEM0169 code "FEM0169" name "Anticonceptivos orales" description "Anticonceptivos orales de Bayer" category "femenino" price "17.98" stock "29" minStock "12" expiryDate "2028-04-13" batchNumber "LOT155154" laboratory "Eli Lilly" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products FEM0169
+SADD categories femenino
+SADD products_by_category:femenino FEM0169
+ZADD expiring_products 1839196800000 FEM0169
+HSET product:GAS0060 code "GAS0060" name "Esomeprazol 20mg" description "Esomeprazol 20mg de AstraZeneca" category "gastrointestinal" price "33.64" stock "9" minStock "14" expiryDate "2026-04-21" batchNumber "LOT918469" laboratory "Abbott" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products GAS0060
+SADD categories gastrointestinal
+SADD products_by_category:gastrointestinal GAS0060
+ZADD expiring_products 1776729600000 GAS0060
+HSET product:DER0048 code "DER0048" name "Crema contorno de ojos" description "Crema contorno de ojos de Sanofi" category "dermocosmetica" price "75.01" stock "94" minStock "9" expiryDate "2027-02-07" batchNumber "LOT702089" laboratory "AstraZeneca" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DER0048
+SADD categories dermocosmetica
+SADD products_by_category:dermocosmetica DER0048
+ZADD expiring_products 1801958400000 DER0048
+HSET product:CAR0071 code "CAR0071" name "Losartan 50mg" description "Losartan 50mg de Eli Lilly" category "cardiovascular" price "81.61" stock "53" minStock "7" expiryDate "2027-06-09" batchNumber "LOT562787" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CAR0071
+SADD categories cardiovascular
+SADD products_by_category:cardiovascular CAR0071
+ZADD expiring_products 1812499200000 CAR0071
+HSET product:PED0188 code "PED0188" name "Multivitaminico pediatric" description "Multivitaminico pediatric de Merck" category "pediatrico" price "42.01" stock "44" minStock "13" expiryDate "2028-03-31" batchNumber "LOT774515" laboratory "AstraZeneca" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products PED0188
+SADD categories pediatrico
+SADD products_by_category:pediatrico PED0188
+ZADD expiring_products 1838073600000 PED0188
+HSET product:ANT0028 code "ANT0028" name "Amoxicilina 875mg" description "Amoxicilina 875mg de Takeda" category "antibioticos" price "145.28" stock "65" minStock "10" expiryDate "2027-08-20" batchNumber "LOT713863" laboratory "AstraZeneca" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0028
+SADD categories antibioticos
+SADD products_by_category:antibioticos ANT0028
+ZADD expiring_products 1818720000000 ANT0028
+HSET product:CUI0134 code "CUI0134" name "Gasas" description "Gasas de Merck" category "cuidado-personal" price "46.05" stock "43" minStock "5" expiryDate "2027-08-08" batchNumber "LOT737426" laboratory "AstraZeneca" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CUI0134
+SADD categories cuidado-personal
+SADD products_by_category:cuidado-personal CUI0134
+ZADD expiring_products 1817683200000 CUI0134
+HSET product:TESTOFFER001 code "TESTOFFER001" name "Producto Test Oferta" description "Test de oferta" category "analgesicos" price "80" stock "25" minStock "5" expiryDate "2027-06-15" batchNumber "LOTTEST001" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "2026-04-04T23:05:58.784Z" updatedAt "2026-04-04T23:05:58.784Z" offer ""
+SADD all_products TESTOFFER001
+SADD categories analgesicos
+SADD products_by_category:analgesicos TESTOFFER001
+ZADD expiring_products 1813017600000 TESTOFFER001
+HSET product:OFT0152 code "OFT0152" name "Tobramicina gotas" description "Tobramicina gotas de Takeda" category "oftalmico" price "73.31" stock "31" minStock "11" expiryDate "2027-12-18" batchNumber "LOT943431" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OFT0152
+SADD categories oftalmico
+SADD products_by_category:oftalmico OFT0152
+ZADD expiring_products 1829088000000 OFT0152
+HSET product:CUI0139 code "CUI0139" name " shampoo medicinal" description " " category "dermocosmetica" price "78.25" stock "27" minStock "11" expiryDate "2026-10-30" batchNumber "LOT507041" laboratory "Johnson & Johnson" presentation "crema" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T00:00:15.568Z" offer "[object Object]"
+SADD all_products CUI0139
+SADD categories dermocosmetica
+SADD products_by_category:dermocosmetica CUI0139
+ZADD expiring_products 1793318400000 CUI0139
+HSET product:DIE0198 code "DIE0198" name "Barra proteinica" description "Barra proteinica de Roche" category "dieteticos" price "6.5" stock "37" minStock "13" expiryDate "2028-03-31" batchNumber "LOT577825" laboratory "Abbott" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DIE0198
+SADD categories dieteticos
+SADD products_by_category:dieteticos DIE0198
+ZADD expiring_products 1838073600000 DIE0198
+HSET product:1235777 code "1235777" name "Peine" description "Peine para pelados" category "cuidado-personal" price "123" stock "10" minStock "1" expiryDate "2026-05-03" batchNumber "123" laboratory "Johnson & Johnson" presentation "otro" saleCondition "venta-libre" createdAt "2026-04-04T22:44:41.030Z" updatedAt "2026-04-04T23:56:02.902Z" offer "{"discount":10,"active":true}"
+SADD all_products 1235777
+SADD categories cuidado-personal
+SADD products_by_category:cuidado-personal 1235777
+ZADD expiring_products 1777766400000 1235777
+HSET product:OFT0154 code "OFT0154" name "Dexametasona gotas" description "Dexametasona gotas de Merck" category "oftalmico" price "7.33" stock "93" minStock "7" expiryDate "2027-06-19" batchNumber "LOT633634" laboratory "Johnson & Johnson" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OFT0154
+SADD categories oftalmico
+SADD products_by_category:oftalmico OFT0154
+ZADD expiring_products 1813363200000 OFT0154
+HSET product:SUP0125 code "SUP0125" name "Spirulina 1000mg" description "Spirulina 1000mg de Merck" category "suplementos" price "131.61" stock "2" minStock "5" expiryDate "2026-04-27" batchNumber "LOT624259" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products SUP0125
+SADD categories suplementos
+SADD products_by_category:suplementos SUP0125
+ZADD expiring_products 1777248000000 SUP0125
+HSET product:OFT0149 code "OFT0149" name "Lagrimas artificiales" description "Lagrimas artificiales de Abbott" category "oftalmico" price "75.87" stock "103" minStock "14" expiryDate "2026-09-17" batchNumber "LOT136536" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OFT0149
+SADD categories oftalmico
+SADD products_by_category:oftalmico OFT0149
+ZADD expiring_products 1789603200000 OFT0149
+HSET product:SUP0126 code "SUP0126" name "Omega-3 1000mg" description "Omega-3 1000mg de Abbott" category "suplementos" price "30.82" stock "86" minStock "12" expiryDate "2027-04-10" batchNumber "LOT707327" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products SUP0126
+SADD categories suplementos
+SADD products_by_category:suplementos SUP0126
+ZADD expiring_products 1807315200000 SUP0126
+HSET product:VIT0099 code "VIT0099" name "Vitamina C 1000mg" description "Vitamina C 1000mg de Sanofi" category "vitaminas" price "145.41" stock "38" minStock "7" expiryDate "2026-11-17" batchNumber "LOT257794" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products VIT0099
+SADD categories vitaminas
+SADD products_by_category:vitaminas VIT0099
+ZADD expiring_products 1794873600000 VIT0099
+HSET product:CUI0128 code "CUI0128" name "Acondicionador" description "Acondicionador de GSK" category "cuidado-personal" price "130.3" stock "63" minStock "8" expiryDate "2027-12-08" batchNumber "LOT100868" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CUI0128
+SADD categories cuidado-personal
+SADD products_by_category:cuidado-personal CUI0128
+ZADD expiring_products 1828224000000 CUI0128
+HSET product:FEM0173 code "FEM0173" name "Crema estrogenica" description "Crema estrogenica de Abbott" category "femenino" price "13.3" stock "67" minStock "14" expiryDate "2026-06-15" batchNumber "LOT155940" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products FEM0173
+SADD categories femenino
+SADD products_by_category:femenino FEM0173
+ZADD expiring_products 1781481600000 FEM0173
+HSET product:SUP0123 code "SUP0123" name "Melatonina 3mg" description "Melatonina 3mg de Sanofi" category "suplementos" price "5.19" stock "12" minStock "9" expiryDate "2028-04-09" batchNumber "LOT290394" laboratory "Takeda" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products SUP0123
+SADD categories suplementos
+SADD products_by_category:suplementos SUP0123
+ZADD expiring_products 1838851200000 SUP0123
+HSET product:CAR0079 code "CAR0079" name "Atorvastatina 20mg" description "Atorvastatina 20mg de Pfizer" category "cardiovascular" price "40.16" stock "102" minStock "14" expiryDate "2026-04-21" batchNumber "LOT435135" laboratory "Merck" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CAR0079
+SADD categories cardiovascular
+SADD products_by_category:cardiovascular CAR0079
+ZADD expiring_products 1776729600000 CAR0079
+HSET product:OTO0162 code "OTO0162" name "Spray nasal descongestivo" description "Spray nasal descongestivo de Novartis" category "otorrinolaringologia" price "65.23" stock "38" minStock "8" expiryDate "2026-12-12" batchNumber "LOT950596" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OTO0162
+SADD categories otorrinolaringologia
+SADD products_by_category:otorrinolaringologia OTO0162
+ZADD expiring_products 1797033600000 OTO0162
+HSET product:DER0052 code "DER0052" name "Bálsamo labial" description "Bálsamo labial de Boehringer Ingelheim" category "dermocosmetica" price "83.25" stock "15" minStock "12" expiryDate "2026-04-08" batchNumber "LOT177665" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DER0052
+SADD categories dermocosmetica
+SADD products_by_category:dermocosmetica DER0052
+ZADD expiring_products 1775606400000 DER0052
+HSET product:OFT0150 code "OFT0150" name "Gotas lubricantes" description "Gotas lubricantes de GSK" category "oftalmico" price "86.61" stock "6" minStock "13" expiryDate "2027-04-10" batchNumber "LOT124589" laboratory "Takeda" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OFT0150
+SADD categories oftalmico
+SADD products_by_category:oftalmico OFT0150
+ZADD expiring_products 1807315200000 OFT0150
+HSET product:ANA0008 code "ANA0008" name "Tramadol 50mg" description "Tramadol 50mg de AstraZeneca" category "analgesicos" price "72.42" stock "31" minStock "5" expiryDate "2026-06-29" batchNumber "LOT745205" laboratory "Eli Lilly" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANA0008
+SADD categories analgesicos
+SADD products_by_category:analgesicos ANA0008
+ZADD expiring_products 1782691200000 ANA0008
+HSET product:ANA0003 code "ANA0003" name "Ibuprofeno 400mg" description "Ibuprofeno 400mg de Eli Lilly" category "analgesicos" price "25.83" stock "18" minStock "10" expiryDate "2026-07-27" batchNumber "LOT545040" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANA0003
+SADD categories analgesicos
+SADD products_by_category:analgesicos ANA0003
+ZADD expiring_products 1785110400000 ANA0003
+HSET product:FEM0179 code "FEM0179" name "Progesterona 200mg" description "Progesterona 200mg de Bristol Myers Squibb" category "femenino" price "136.39" stock "66" minStock "14" expiryDate "2026-04-29" batchNumber "LOT161023" laboratory "Johnson & Johnson" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products FEM0179
+SADD categories femenino
+SADD products_by_category:femenino FEM0179
+ZADD expiring_products 1777420800000 FEM0179
+HSET product:ANA0009 code "ANA0009" name "Codeina 30mg" description "Codeina 30mg de Bristol Myers Squibb" category "analgesicos" price "112.41" stock "101" minStock "14" expiryDate "2026-04-19" batchNumber "LOT986316" laboratory "AstraZeneca" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANA0009
+SADD categories analgesicos
+SADD products_by_category:analgesicos ANA0009
+ZADD expiring_products 1776556800000 ANA0009
+HSET product:ANT0017 code "ANT0017" name "Azitromicina 500mg" description "Azitromicina 500mg de Sanofi" category "antibioticos" price "79.59" stock "79" minStock "9" expiryDate "2026-12-05" batchNumber "LOT544382" laboratory "Eli Lilly" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0017
+SADD categories antibioticos
+SADD products_by_category:antibioticos ANT0017
+ZADD expiring_products 1796428800000 ANT0017
+HSET product:ANA0007 code "ANA0007" name "Naproxeno 500mg" description "Naproxeno 500mg de Pfizer" category "analgesicos" price "51.42" stock "86" minStock "8" expiryDate "2027-07-17" batchNumber "LOT789847" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANA0007
+SADD categories analgesicos
+SADD products_by_category:analgesicos ANA0007
+ZADD expiring_products 1815782400000 ANA0007
+HSET product:FEM0174 code "FEM0174" name "Tratamiento candidiasis" description "Tratamiento candidiasis de Novartis" category "femenino" price "124.99" stock "62" minStock "8" expiryDate "2026-04-29" batchNumber "LOT416731" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products FEM0174
+SADD categories femenino
+SADD products_by_category:femenino FEM0174
+ZADD expiring_products 1777420800000 FEM0174
+HSET product:ANT0035 code "ANT0035" name "Piroxicam 20mg" description "Piroxicam 20mg de Eli Lilly" category "antiflamatorios" price "129.8" stock "7" minStock "8" expiryDate "2027-06-19" batchNumber "LOT865313" laboratory "Eli Lilly" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0035
+SADD categories antiflamatorios
+SADD products_by_category:antiflamatorios ANT0035
+ZADD expiring_products 1813363200000 ANT0035
+HSET product:CHECK001 code "CHECK001" name "Producto Verificacion" description "Test verificacion" category "vitaminas" price "150" stock "20" minStock "5" expiryDate "2027-12-31" batchNumber "LOTCHECK001" laboratory "TestLab" presentation "comprimido" saleCondition "venta-libre" createdAt "2026-04-04T23:13:11.930Z" updatedAt "2026-04-04T23:13:11.930Z" offer "{"discount":50,"active":true}"
+SADD all_products CHECK001
+SADD categories vitaminas
+SADD products_by_category:vitaminas CHECK001
+ZADD expiring_products 1830211200000 CHECK001
+HSET product:OTO0157 code "OTO0157" name "Gotas oticas" description "Gotas oticas de Johnson & Johnson" category "otorrinolaringologia" price "141.4" stock "64" minStock "8" expiryDate "2027-08-04" batchNumber "LOT152281" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OTO0157
+SADD categories otorrinolaringologia
+SADD products_by_category:otorrinolaringologia OTO0157
+ZADD expiring_products 1817337600000 OTO0157
+HSET product:VIT0112 code "VIT0112" name "Vitamina D3 1000UI" description "Vitamina D3 1000UI de Sanofi" category "vitaminas" price "88.6" stock "56" minStock "8" expiryDate "2027-11-04" batchNumber "LOT346282" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products VIT0112
+SADD categories vitaminas
+SADD products_by_category:vitaminas VIT0112
+ZADD expiring_products 1825286400000 VIT0112
+HSET product:OFT0141 code "OFT0141" name "Lagrimas artificiales" description "Lagrimas artificiales de Boehringer Ingelheim" category "oftalmico" price "28.08" stock "55" minStock "7" expiryDate "2028-03-22" batchNumber "LOT815681" laboratory "Johnson & Johnson" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OFT0141
+SADD categories oftalmico
+SADD products_by_category:oftalmico OFT0141
+ZADD expiring_products 1837296000000 OFT0141
+HSET product:OTO0164 code "OTO0164" name "Agua oxigenada" description "Agua oxigenada de Boehringer Ingelheim" category "otorrinolaringologia" price "135.77" stock "13" minStock "12" expiryDate "2027-10-26" batchNumber "LOT423922" laboratory "Merck" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OTO0164
+SADD categories otorrinolaringologia
+SADD products_by_category:otorrinolaringologia OTO0164
+ZADD expiring_products 1824508800000 OTO0164
+HSET product:VIT0108 code "VIT0108" name "Multivitaminico" description "Multivitaminico de Takeda" category "vitaminas" price "146.46" stock "7" minStock "8" expiryDate "2026-06-10" batchNumber "LOT521507" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products VIT0108
+SADD categories vitaminas
+SADD products_by_category:vitaminas VIT0108
+ZADD expiring_products 1781049600000 VIT0108
+HSET product:RES0095 code "RES0095" name "Fenilefrina 10mg" description "Fenilefrina 10mg de GSK" category "respiratorio" price "46.68" stock "110" minStock "11" expiryDate "2026-04-05" batchNumber "LOT844068" laboratory "Takeda" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products RES0095
+SADD categories respiratorio
+SADD products_by_category:respiratorio RES0095
+ZADD expiring_products 1775347200000 RES0095
+HSET product:CAR0084 code "CAR0084" name "Losartan 100mg" description "Losartan 100mg de Sanofi" category "cardiovascular" price "13.95" stock "8" minStock "14" expiryDate "2026-08-23" batchNumber "LOT327359" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CAR0084
+SADD categories cardiovascular
+SADD products_by_category:cardiovascular CAR0084
+ZADD expiring_products 1787443200000 CAR0084
+HSET product:12345678 code "12345678" name "1123" description "123132" category "respiratorio" price "12313" stock "20" minStock "1" expiryDate "2026-04-14" batchNumber "1231" laboratory "123" presentation "comprimido" saleCondition "venta-libre" createdAt "2026-04-04T23:03:56.337Z" updatedAt "2026-04-04T23:15:33.467Z" offer "{"discount":50,"active":true}"
+SADD all_products 12345678
+SADD categories respiratorio
+SADD products_by_category:respiratorio 12345678
+ZADD expiring_products 1776124800000 12345678
+HSET product:PED0192 code "PED0192" name "Paracetamol pediatric" description "Paracetamol pediatric de Eli Lilly" category "pediatrico" price "74.51" stock "58" minStock "7" expiryDate "2027-11-28" batchNumber "LOT633190" laboratory "Bayer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products PED0192
+SADD categories pediatrico
+SADD products_by_category:pediatrico PED0192
+ZADD expiring_products 1827360000000 PED0192
+HSET product:ANT0033 code "ANT0033" name "Diclofenaco 50mg" description "Diclofenaco 50mg de Novartis" category "antiflamatorios" price "29.87" stock "72" minStock "8" expiryDate "2027-02-12" batchNumber "LOT377130" laboratory "Johnson & Johnson" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0033
+SADD categories antiflamatorios
+SADD products_by_category:antiflamatorios ANT0033
+ZADD expiring_products 1802390400000 ANT0033
+HSET product:VIT0104 code "VIT0104" name "Vitamina B Complex" description "Vitamina B Complex de Boehringer Ingelheim" category "vitaminas" price "20.03" stock "112" minStock "13" expiryDate "2028-02-21" batchNumber "LOT199252" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products VIT0104
+SADD categories vitaminas
+SADD products_by_category:vitaminas VIT0104
+ZADD expiring_products 1834704000000 VIT0104
+HSET product:DER0050 code "DER0050" name "Tónico facial" description "Tónico facial de Eli Lilly" category "dermocosmetica" price "144.12" stock "51" minStock "14" expiryDate "2027-02-11" batchNumber "LOT113250" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DER0050
+SADD categories dermocosmetica
+SADD products_by_category:dermocosmetica DER0050
+ZADD expiring_products 1802304000000 DER0050
+HSET product:RES0098 code "RES0098" name "Budesonida 100mcg" description "Budesonida 100mcg de Sanofi" category "respiratorio" price "95.72" stock "86" minStock "12" expiryDate "2027-12-04" batchNumber "LOT206597" laboratory "Bristol Myers Squibb" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products RES0098
+SADD categories respiratorio
+SADD products_by_category:respiratorio RES0098
+ZADD expiring_products 1827878400000 RES0098
+HSET product:PED0187 code "PED0187" name "Vitamina D3 pediatric" description "Vitamina D3 pediatric de Pfizer" category "pediatrico" price "27.66" stock "65" minStock "13" expiryDate "2027-03-09" batchNumber "LOT186502" laboratory "Takeda" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products PED0187
+SADD categories pediatrico
+SADD products_by_category:pediatrico PED0187
+ZADD expiring_products 1804550400000 PED0187
+HSET product:OTO0161 code "OTO0161" name "Spray nasal physiologic" description "Spray nasal physiologic de Sanofi" category "otorrinolaringologia" price "78.7" stock "91" minStock "5" expiryDate "2026-05-27" batchNumber "LOT637770" laboratory "AstraZeneca" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OTO0161
+SADD categories otorrinolaringologia
+SADD products_by_category:otorrinolaringologia OTO0161
+ZADD expiring_products 1779840000000 OTO0161
+HSET product:CAR0082 code "CAR0082" name "Rosuvastatina 10mg" description "Rosuvastatina 10mg de Sanofi" category "cardiovascular" price "46.52" stock "85" minStock "7" expiryDate "2027-01-08" batchNumber "LOT774589" laboratory "Bayer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CAR0082
+SADD categories cardiovascular
+SADD products_by_category:cardiovascular CAR0082
+ZADD expiring_products 1799366400000 CAR0082
+HSET product:SUP0124 code "SUP0124" name "Ginkgo biloba 80mg" description "Ginkgo biloba 80mg de Pfizer" category "suplementos" price "32.99" stock "9" minStock "14" expiryDate "2027-09-04" batchNumber "LOT294312" laboratory "AstraZeneca" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products SUP0124
+SADD categories suplementos
+SADD products_by_category:suplementos SUP0124
+ZADD expiring_products 1820016000000 SUP0124
+HSET product:ANA0012 code "ANA0012" name "Diclofenaco 50mg" description "Diclofenaco 50mg de Teva" category "analgesicos" price "45.89" stock "73" minStock "9" expiryDate "2027-05-14" batchNumber "LOT641433" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANA0012
+SADD categories analgesicos
+SADD products_by_category:analgesicos ANA0012
+ZADD expiring_products 1810252800000 ANA0012
+HSET product:GAS0069 code "GAS0069" name "Omeprazol 20mg" description "Omeprazol 20mg de Abbott" category "gastrointestinal" price "39.01" stock "85" minStock "10" expiryDate "2026-11-15" batchNumber "LOT547491" laboratory "Bayer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products GAS0069
+SADD categories gastrointestinal
+SADD products_by_category:gastrointestinal GAS0069
+ZADD expiring_products 1794700800000 GAS0069
+HSET product:DER0047 code "DER0047" name "Serum vitamina C" description "Serum vitamina C de GSK" category "dermocosmetica" price "83.8" stock "2" minStock "6" expiryDate "2026-11-01" batchNumber "LOT644786" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DER0047
+SADD categories dermocosmetica
+SADD products_by_category:dermocosmetica DER0047
+ZADD expiring_products 1793491200000 DER0047
+HSET product:ANT0036 code "ANT0036" name "Meloxicam 15mg" description "Meloxicam 15mg de Sanofi" category "antiflamatorios" price "140.18" stock "5" minStock "13" expiryDate "2026-06-10" batchNumber "LOT498596" laboratory "Eli Lilly" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0036
+SADD categories antiflamatorios
+SADD products_by_category:antiflamatorios ANT0036
+ZADD expiring_products 1781049600000 ANT0036
+HSET product:ANT0040 code "ANT0040" name "Ibuprofeno 600mg" description "Ibuprofeno 600mg de Bristol Myers Squibb" category "antiflamatorios" price "70.49" stock "18" minStock "7" expiryDate "2027-01-27" batchNumber "LOT515071" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0040
+SADD categories antiflamatorios
+SADD products_by_category:antiflamatorios ANT0040
+ZADD expiring_products 1801008000000 ANT0040
+HSET product:GAS0064 code "GAS0064" name "Domperidona 10mg" description "Domperidona 10mg de Teva" category "gastrointestinal" price "62.94" stock "3" minStock "11" expiryDate "2026-11-02" batchNumber "LOT998907" laboratory "AstraZeneca" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products GAS0064
+SADD categories gastrointestinal
+SADD products_by_category:gastrointestinal GAS0064
+ZADD expiring_products 1793577600000 GAS0064
+HSET product:ANT0020 code "ANT0020" name "Cefalexina 500mg" description "Cefalexina 500mg de Teva" category "antibioticos" price "106.01" stock "80" minStock "11" expiryDate "2027-11-10" batchNumber "LOT574899" laboratory "Johnson & Johnson" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0020
+SADD categories antibioticos
+SADD products_by_category:antibioticos ANT0020
+ZADD expiring_products 1825804800000 ANT0020
+HSET product:RES0094 code "RES0094" name "Pseudoefedrina 60mg" description "Pseudoefedrina 60mg de Roche" category "respiratorio" price "98.55" stock "20" minStock "10" expiryDate "2027-02-28" batchNumber "LOT328965" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products RES0094
+SADD categories respiratorio
+SADD products_by_category:respiratorio RES0094
+ZADD expiring_products 1803772800000 RES0094
+HSET product:DIE0199 code "DIE0199" name "Bebida isotonica" description "Bebida isotonica de Teva" category "dieteticos" price "137.82" stock "100" minStock "12" expiryDate "2028-03-24" batchNumber "LOT937939" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DIE0199
+SADD categories dieteticos
+SADD products_by_category:dieteticos DIE0199
+ZADD expiring_products 1837468800000 DIE0199
+HSET product:ANT0034 code "ANT0034" name "Diclofenaco gel" description "Diclofenaco gel de Teva" category "antiflamatorios" price "118.72" stock "31" minStock "6" expiryDate "2027-01-04" batchNumber "LOT221218" laboratory "Merck" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0034
+SADD categories antiflamatorios
+SADD products_by_category:antiflamatorios ANT0034
+ZADD expiring_products 1799020800000 ANT0034
+HSET product:OFT0151 code "OFT0151" name "Solucion lentes contacto" description "Solucion lentes contacto de Boehringer Ingelheim" category "oftalmico" price "83.49" stock "97" minStock "13" expiryDate "2027-05-19" batchNumber "LOT474088" laboratory "Roche" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OFT0151
+SADD categories oftalmico
+SADD products_by_category:oftalmico OFT0151
+ZADD expiring_products 1810684800000 OFT0151
+HSET product:OTO0160 code "OTO0160" name "Spray garganta" description "Spray garganta de Johnson & Johnson" category "otorrinolaringologia" price "7.63" stock "9" minStock "11" expiryDate "2027-05-04" batchNumber "LOT297854" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OTO0160
+SADD categories otorrinolaringologia
+SADD products_by_category:otorrinolaringologia OTO0160
+ZADD expiring_products 1809388800000 OTO0160
+HSET product:PED0189 code "PED0189" name "Suer oral" description "Suer oral de GSK" category "pediatrico" price "142.67" stock "103" minStock "6" expiryDate "2026-11-19" batchNumber "LOT575701" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products PED0189
+SADD categories pediatrico
+SADD products_by_category:pediatrico PED0189
+ZADD expiring_products 1795046400000 PED0189
+HSET product:DER0056 code "DER0056" name "Protector solar SPF 50" description "Protector solar SPF 50 de Eli Lilly" category "dermocosmetica" price "72.97" stock "106" minStock "13" expiryDate "2026-10-25" batchNumber "LOT411682" laboratory "Merck" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DER0056
+SADD categories dermocosmetica
+SADD products_by_category:dermocosmetica DER0056
+ZADD expiring_products 1792886400000 DER0056
+HSET product:GAS0062 code "GAS0062" name "Famotidina 20mg" description "Famotidina 20mg de Johnson & Johnson" category "gastrointestinal" price "129.23" stock "33" minStock "9" expiryDate "2026-12-30" batchNumber "LOT365632" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products GAS0062
+SADD categories gastrointestinal
+SADD products_by_category:gastrointestinal GAS0062
+ZADD expiring_products 1798588800000 GAS0062
+HSET product:DER0045 code "DER0045" name "Crema antiarugas" description "Crema antiarugas de Merck" category "dermocosmetica" price "77.23" stock "37" minStock "12" expiryDate "2027-05-15" batchNumber "LOT774767" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products DER0045
+SADD categories dermocosmetica
+SADD products_by_category:dermocosmetica DER0045
+ZADD expiring_products 1810339200000 DER0045
+HSET product:CAR0078 code "CAR0078" name "Furosemida 40mg" description "Furosemida 40mg de GSK" category "cardiovascular" price "43.88" stock "51" minStock "14" expiryDate "2026-05-20" batchNumber "LOT552160" laboratory "Takeda" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CAR0078
+SADD categories cardiovascular
+SADD products_by_category:cardiovascular CAR0078
+ZADD expiring_products 1779235200000 CAR0078
+HSET product:PED0184 code "PED0184" name "Ibuprofeno pediatric" description "Ibuprofeno pediatric de Roche" category "pediatrico" price "141.29" stock "1" minStock "7" expiryDate "2028-01-25" batchNumber "LOT392696" laboratory "Bayer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products PED0184
+SADD categories pediatrico
+SADD products_by_category:pediatrico PED0184
+ZADD expiring_products 1832371200000 PED0184
+HSET product:ANT0019 code "ANT0019" name "Ceftriaxona 1g" description "Ceftriaxona 1g de Novartis" category "antibioticos" price "73.59" stock "74" minStock "11" expiryDate "2026-07-15" batchNumber "LOT352611" laboratory "Abbott" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANT0019
+SADD categories antibioticos
+SADD products_by_category:antibioticos ANT0019
+ZADD expiring_products 1784073600000 ANT0019
+HSET product:RES0091 code "RES0091" name "Ambroxol 30mg" description "Ambroxol 30mg de AstraZeneca" category "respiratorio" price "34.94" stock "61" minStock "5" expiryDate "2026-06-02" batchNumber "LOT103466" laboratory "Boehringer Ingelheim" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products RES0091
+SADD categories respiratorio
+SADD products_by_category:respiratorio RES0091
+ZADD expiring_products 1780358400000 RES0091
+HSET product:PED0196 code "PED0196" name "Vitamina D3 pediatric" description "Vitamina D3 pediatric de Takeda" category "pediatrico" price "110.86" stock "83" minStock "10" expiryDate "2027-02-18" batchNumber "LOT802670" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products PED0196
+SADD categories pediatrico
+SADD products_by_category:pediatrico PED0196
+ZADD expiring_products 1802908800000 PED0196
+HSET product:PED0183 code "PED0183" name "Paracetamol pediatric" description "Paracetamol pediatric de Bristol Myers Squibb" category "pediatrico" price "34.63" stock "54" minStock "13" expiryDate "2027-09-08" batchNumber "LOT161830" laboratory "Boehringer Ingelheim" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products PED0183
+SADD categories pediatrico
+SADD products_by_category:pediatrico PED0183
+ZADD expiring_products 1820361600000 PED0183
+HSET product:RES0089 code "RES0089" name "Loratadina 10mg" description "Loratadina 10mg de Boehringer Ingelheim" category "respiratorio" price "130.54" stock "91" minStock "13" expiryDate "2027-10-01" batchNumber "LOT579229" laboratory "Eli Lilly" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products RES0089
+SADD categories respiratorio
+SADD products_by_category:respiratorio RES0089
+ZADD expiring_products 1822348800000 RES0089
+HSET product:NEWOFFER001 code "NEWOFFER001" name "Nuevo Producto con Oferta" description "Producto de prueba" category "vitaminas" price "100" stock "50" minStock "10" expiryDate "2028-12-31" batchNumber "LOT000001" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "2026-04-04T22:42:56.617Z" updatedAt "2026-04-04T22:42:56.617Z" offer "{discount:30,active:true}"
+SADD all_products NEWOFFER001
+SADD categories vitaminas
+SADD products_by_category:vitaminas NEWOFFER001
+ZADD expiring_products 1861833600000 NEWOFFER001
+HSET product:OTO0159 code "OTO0159" name "Glicerina boratada" description "Glicerina boratada de Roche" category "otorrinolaringologia" price "70.47" stock "51" minStock "11" expiryDate "2027-02-21" batchNumber "LOT585865" laboratory "Bristol Myers Squibb" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OTO0159
+SADD categories otorrinolaringologia
+SADD products_by_category:otorrinolaringologia OTO0159
+ZADD expiring_products 1803168000000 OTO0159
+HSET product:VIT0102 code "VIT0102" name "Vitamina B12 1000mcg" description "Vitamina B12 1000mcg de Teva" category "vitaminas" price "33.46" stock "51" minStock "6" expiryDate "2028-03-07" batchNumber "LOT133527" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products VIT0102
+SADD categories vitaminas
+SADD products_by_category:vitaminas VIT0102
+ZADD expiring_products 1836000000000 VIT0102
+HSET product:RES0085 code "RES0085" name "Salbutamol 100mcg" description "Salbutamol 100mcg de Teva" category "respiratorio" price "50.47" stock "15" minStock "6" expiryDate "2026-09-18" batchNumber "LOT806480" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products RES0085
+SADD categories respiratorio
+SADD products_by_category:respiratorio RES0085
+ZADD expiring_products 1789689600000 RES0085
+HSET product:SUP0119 code "SUP0119" name "Zinc 50mg" description "Zinc 50mg de AstraZeneca" category "suplementos" price "84.66" stock "81" minStock "14" expiryDate "2028-01-10" batchNumber "LOT498446" laboratory "Bristol Myers Squibb" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products SUP0119
+SADD categories suplementos
+SADD products_by_category:suplementos SUP0119
+ZADD expiring_products 1831075200000 SUP0119
+HSET product:SUP0120 code "SUP0120" name "Selenio 200mcg" description "Selenio 200mcg de Novartis" category "suplementos" price "102.91" stock "59" minStock "13" expiryDate "2026-05-12" batchNumber "LOT635026" laboratory "AstraZeneca" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products SUP0120
+SADD categories suplementos
+SADD products_by_category:suplementos SUP0120
+ZADD expiring_products 1778544000000 SUP0120
+HSET product:ANA0005 code "ANA0005" name "Aspirina 500mg" description "Aspirina 500mg de Merck" category "analgesicos" price "149.98" stock "19" minStock "10" expiryDate "2026-04-06" batchNumber "LOT469844" laboratory "Merck" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANA0005
+SADD categories analgesicos
+SADD products_by_category:analgesicos ANA0005
+ZADD expiring_products 1775433600000 ANA0005
+HSET product:OFT0153 code "OFT0153" name "Polimixina B gotas" description "Polimixina B gotas de GSK" category "oftalmico" price "53.2" stock "44" minStock "9" expiryDate "2026-05-25" batchNumber "LOT240600" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OFT0153
+SADD categories oftalmico
+SADD products_by_category:oftalmico OFT0153
+ZADD expiring_products 1779667200000 OFT0153
+HSET product:CAR0081 code "CAR0081" name "Simvastatina 20mg" description "Simvastatina 20mg de AstraZeneca" category "cardiovascular" price "21.31" stock "16" minStock "5" expiryDate "2027-09-22" batchNumber "LOT577089" laboratory "Bristol Myers Squibb" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products CAR0081
+SADD categories cardiovascular
+SADD products_by_category:cardiovascular CAR0081
+ZADD expiring_products 1821571200000 CAR0081
+HSET product:PED0186 code "PED0186" name "Azitromicina suspension" description "Azitromicina suspension de Pfizer" category "pediatrico" price "97.94" stock "55" minStock "13" expiryDate "2028-04-12" batchNumber "LOT830362" laboratory "Sanofi" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products PED0186
+SADD categories pediatrico
+SADD products_by_category:pediatrico PED0186
+ZADD expiring_products 1839110400000 PED0186
+HSET product:ANA0011 code "ANA0011" name "Ketoprofeno 50mg" description "Ketoprofeno 50mg de Johnson & Johnson" category "analgesicos" price "79.08" stock "15" minStock "14" expiryDate "2027-08-15" batchNumber "LOT790462" laboratory "Merck" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products ANA0011
+SADD categories analgesicos
+SADD products_by_category:analgesicos ANA0011
+ZADD expiring_products 1818288000000 ANA0011
+HSET product:FEM0182 code "FEM0182" name "Crema estrogenica" description "Crema estrogenica de Merck" category "femenino" price "110.11" stock "96" minStock "6" expiryDate "2027-05-26" batchNumber "LOT672698" laboratory "Bristol Myers Squibb" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products FEM0182
+SADD categories femenino
+SADD products_by_category:femenino FEM0182
+ZADD expiring_products 1811289600000 FEM0182
+HSET product:OTO0166 code "OTO0166" name "Spray garganta" description "Spray garganta de Eli Lilly" category "otorrinolaringologia" price "85" stock "51" minStock "10" expiryDate "2028-05-02" batchNumber "LOT585013" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.729Z" offer ""
+SADD all_products OTO0166
+SADD categories otorrinolaringologia
+SADD products_by_category:otorrinolaringologia OTO0166
+ZADD expiring_products 1840838400000 OTO0166
+HSET product:VIT0110 code "VIT0110" name "Magnesio 300mg" description "Magnesio 300mg de Bristol Myers Squibb" category "vitaminas" price "138.81" stock "56" minStock "13" expiryDate "2027-03-15" batchNumber "LOT191952" laboratory "Eli Lilly" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.730Z" offer ""
+SADD all_products VIT0110
+SADD categories vitaminas
+SADD products_by_category:vitaminas VIT0110
+ZADD expiring_products 1805068800000 VIT0110
+HSET product:ANT0030 code "ANT0030" name "Ibuprofeno 600mg" description "Ibuprofeno 600mg de Teva" category "antiflamatorios" price "70.46" stock "71" minStock "14" expiryDate "2028-01-29" batchNumber "LOT832956" laboratory "Roche" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.730Z" offer ""
+SADD all_products ANT0030
+SADD categories antiflamatorios
+SADD products_by_category:antiflamatorios ANT0030
+ZADD expiring_products 1832716800000 ANT0030
+HSET product:DIE0200 code "DIE0200" name "Sustituto comida" description "Sustituto comida de Pfizer" category "dieteticos" price "43.41" stock "2" minStock "13" expiryDate "2027-07-05" batchNumber "LOT941790" laboratory "Eli Lilly" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.730Z" offer ""
+SADD all_products DIE0200
+SADD categories dieteticos
+SADD products_by_category:dieteticos DIE0200
+ZADD expiring_products 1814745600000 DIE0200
+HSET product:OTO0163 code "OTO0163" name "Gotas oticas" description "Gotas oticas de Abbott" category "otorrinolaringologia" price "56.06" stock "50" minStock "6" expiryDate "2027-04-07" batchNumber "LOT713297" laboratory "Boehringer Ingelheim" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.730Z" offer ""
+SADD all_products OTO0163
+SADD categories otorrinolaringologia
+SADD products_by_category:otorrinolaringologia OTO0163
+ZADD expiring_products 1807056000000 OTO0163
+HSET product:RES0092 code "RES0092" name "Ambroxol jarabe" description "Ambroxol jarabe de GSK" category "respiratorio" price "12.97" stock "27" minStock "6" expiryDate "2027-12-07" batchNumber "LOT178166" laboratory "Roche" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.730Z" offer ""
+SADD all_products RES0092
+SADD categories respiratorio
+SADD products_by_category:respiratorio RES0092
+ZADD expiring_products 1828137600000 RES0092
+HSET product:VIT0103 code "VIT0103" name "Vitamina B1 100mg" description "Vitamina B1 100mg de Eli Lilly" category "vitaminas" price "66.66" stock "94" minStock "9" expiryDate "2028-01-15" batchNumber "LOT566093" laboratory "Eli Lilly" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.730Z" offer ""
+SADD all_products VIT0103
+SADD categories vitaminas
+SADD products_by_category:vitaminas VIT0103
+ZADD expiring_products 1831507200000 VIT0103
+HSET product:ANT0038 code "ANT0038" name "Etoricoxib 90mg" description "Etoricoxib 90mg de GSK" category "antiflamatorios" price "39.04" stock "32" minStock "12" expiryDate "2028-02-06" batchNumber "LOT341312" laboratory "Novartis" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.730Z" offer ""
+SADD all_products ANT0038
+SADD categories antiflamatorios
+SADD products_by_category:antiflamatorios ANT0038
+ZADD expiring_products 1833408000000 ANT0038
+HSET product:OFT0142 code "OFT0142" name "Gotas lubricantes" description "Gotas lubricantes de Abbott" category "oftalmico" price "67.71" stock "112" minStock "13" expiryDate "2027-10-19" batchNumber "LOT695009" laboratory "Teva" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.730Z" offer ""
+SADD all_products OFT0142
+SADD categories oftalmico
+SADD products_by_category:oftalmico OFT0142
+ZADD expiring_products 1823904000000 OFT0142
+HSET product:GAS0057 code "GAS0057" name "Omeprazol 20mg" description "Omeprazol 20mg de Takeda" category "gastrointestinal" price "139.76" stock "34" minStock "12" expiryDate "2028-01-06" batchNumber "LOT121627" laboratory "GSK" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.730Z" offer ""
+SADD all_products GAS0057
+SADD categories gastrointestinal
+SADD products_by_category:gastrointestinal GAS0057
+ZADD expiring_products 1830729600000 GAS0057
+HSET product:ANT0015 code "ANT0015" name "Amoxicilina 500mg" description "Amoxicilina 500mg de Pfizer" category "antibioticos" price "68.69" stock "11" minStock "9" expiryDate "2026-05-02" batchNumber "LOT374960" laboratory "Takeda" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968194" updatedAt "2026-04-05T04:27:03.730Z" offer ""
+SADD all_products ANT0015
+SADD categories antibioticos
+SADD products_by_category:antibioticos ANT0015
+ZADD expiring_products 1777680000000 ANT0015
+HSET product:TEST001 code "TEST001" name "Producto de Prueba" description "Descripción test" category "analgesicos" price "99.99" stock "50" minStock "10" expiryDate "2027-12-31" batchNumber "LOT999999" laboratory "Bayer" presentation "comprimido" saleCondition "venta-libre" createdAt "2026-04-04T22:10:42.763Z" updatedAt "2026-04-04T22:10:42.763Z" offer ""
+SADD all_products TEST001
+SADD categories analgesicos
+SADD products_by_category:analgesicos TEST001
+ZADD expiring_products 1830211200000 TEST001
+HSET product:CUI0132 code "CUI0132" name "Cepillo dental" description "Cepillo dental de Pfizer" category "cuidado-personal" price "9.71" stock "47" minStock "6" expiryDate "2026-08-14" batchNumber "LOT633958" laboratory "Roche" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.730Z" offer ""
+SADD all_products CUI0132
+SADD categories cuidado-personal
+SADD products_by_category:cuidado-personal CUI0132
+ZADD expiring_products 1786665600000 CUI0132
+HSET product:CUI0137 code "CUI0137" name "Tiras nasal" description "Tiras nasal de GSK" category "cuidado-personal" price "114.63" stock "68" minStock "8" expiryDate "2026-04-26" batchNumber "LOT521171" laboratory "Pfizer" presentation "comprimido" saleCondition "venta-libre" createdAt "1775339968195" updatedAt "2026-04-05T04:27:03.730Z" offer ""
+SADD all_products CUI0137
+SADD categories cuidado-personal
+SADD products_by_category:cuidado-personal CUI0137
+ZADD expiring_products 1777161600000 CUI0137

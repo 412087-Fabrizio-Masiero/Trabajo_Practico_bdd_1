@@ -181,7 +181,8 @@ function renderCategories(categories) {
   }
   container.innerHTML = categories.map(cat => 
     '<div class="category-card" onclick="navigateToProducts(\'' + cat.name + '\')">' +
-      '<div class="category-name">' + escapeHtml(cat.name) + '</div>' +
+      '<div class="category-icon">' + getCategoryIcon(cat.name) + '</div>' +
+      '<div class="category-name">' + formatCategoryName(cat.name) + '</div>' +
       '<div class="category-count">' + cat.productCount + ' productos</div>' +
     '</div>'
   ).join('');
@@ -435,7 +436,7 @@ function renderProducts(products) {
         '<div class="product-name">' + escapeHtml(p.name) + presentation + saleConditionHtml + '</div>' +
         '<div class="product-code"><span class="barcode-text">' + escapeHtml(p.code) + '</span></div>' +
       '</div>' + offerBadge + '</div>' +
-      '<div class="product-category">' + escapeHtml(p.category) + ' | ' + escapeHtml(p.laboratory || 'Sin laboratorio') + '</div>' +
+      '<div class="product-category">' + formatCategoryName(p.category) + ' | ' + escapeHtml(p.laboratory || 'Sin laboratorio') + '</div>' +
       drugsHtml +
       '<div class="product-stats">' +
         '<div class="product-stat"><div class="product-stat-label">Stock</div><div class="product-stat-value ' + (isLow ? 'low' : '') + '">' + p.stock + '</div></div>' +
@@ -536,6 +537,33 @@ function formatNumber(num) {
 
 function formatCurrency(amount) {
   return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'ARS' }).format(amount);
+}
+
+function formatCategoryName(cat) {
+  if (!cat) return '';
+  return cat.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+}
+
+const categoryIcons = {
+  'pediatrico': '👶',
+  'vitaminas': '💊',
+  'suplementos': '💪',
+  'antibioticos': '🔬',
+  'dieteticos': '🥗',
+  'otorrinolaringologia': '👂',
+  'gastrointestinal': '🫃',
+  'cuidado-personal': '🧴',
+  'dermocosmetica': '🧬',
+  'analgesicos': '💉',
+  'femenino': '👩',
+  'antiflamatorios': '🔥',
+  'oftalmico': '👁️',
+  'cardiovascular': '❤️',
+  'respiratorio': '🫁'
+};
+
+function getCategoryIcon(cat) {
+  return categoryIcons[cat] || '📦';
 }
 
 function formatDate(dateStr) {
@@ -1487,7 +1515,7 @@ function renderStockLowReport(data, container) {
   products.forEach(p => {
     html += '<tr>' +
       '<td>' + escapeHtml(p.name) + '</td>' +
-      '<td>' + escapeHtml(p.category) + '</td>' +
+      '<td>' + formatCategoryName(p.category) + '</td>' +
       '<td class="negative">' + p.stock + '</td>' +
       '<td>' + p.minStock + '</td>' +
       '<td class="negative">-' + p.deficit + '</td>' +
