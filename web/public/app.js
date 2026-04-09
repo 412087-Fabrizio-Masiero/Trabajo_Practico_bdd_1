@@ -729,9 +729,7 @@ async function handleProductSubmit(e) {
   product.stock = parseInt(document.getElementById('product-stock').value);
   
   const minStockInput = document.getElementById('product-min-stock').value;
-  if (minStockInput) {
-    product.minStock = parseInt(minStockInput);
-  }
+  product.minStock = minStockInput ? parseInt(minStockInput) : 0;
   
   const laboratory = document.getElementById('product-laboratory').value;
   if (laboratory) product.laboratory = laboratory;
@@ -741,6 +739,9 @@ async function handleProductSubmit(e) {
   
   const saleCondition = document.getElementById('product-sale-condition').value;
   if (saleCondition) product.saleCondition = saleCondition;
+  
+  const expiryDate = document.getElementById('product-expiry').value;
+  if (expiryDate) product.expiryDate = expiryDate;
   
   // Only add drugs if there are valid entries
   if (drugs.length > 0) {
@@ -1348,13 +1349,13 @@ async function loadMovements() {
   container.innerHTML = '<div class="loading">Cargando...</div>';
   
   try {
-    const productCode = document.getElementById('search-movement-product')?.value || '';
+    const productSearch = document.getElementById('search-movement-product')?.value || '';
     const type = document.getElementById('filter-movement-type')?.value || '';
     const dateFrom = document.getElementById('filter-movement-date-from')?.value || '';
     const dateTo = document.getElementById('filter-movement-date-to')?.value || '';
     
     let url = '/movements?limit=100';
-    if (productCode) url += '&productCode=' + productCode;
+    if (productSearch) url += '&productName=' + encodeURIComponent(productSearch);
     if (type) url += '&type=' + type;
     if (dateFrom) url += '&dateFrom=' + dateFrom;
     if (dateTo) url += '&dateTo=' + dateTo;

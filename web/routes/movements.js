@@ -32,20 +32,28 @@ async function recordMovement(client, movement) {
 router.get('/', async (req, res) => {
   let client = null;
   try {
-    const { productCode, type, limit = 50, offset = 0, dateFrom, dateTo } = req.query;
+    const { productCode, productName, type, limit = 50, offset = 0, dateFrom, dateTo } = req.query;
     client = getRedisClient();
     
     let movements = [];
     
+    // Obtener todos los movimientos primero (para filtrar por nombre)
+    const rawMovements = await client.lrange(REDIS_KEYS.stockMovements, 0, -1);
+    movements = rawMovements.map(m => JSON.parse(m));
+    
+    // Filtrar por código de producto si se especifica
     if (productCode) {
-      // Movimientos de un producto específico
-      const key = REDIS_KEYS.stockMovementsByProduct(productCode);
-      const rawMovements = await client.lrange(key, offset, offset + parseInt(limit) - 1);
-      movements = rawMovements.map(m => JSON.parse(m));
-    } else {
-      // Todos los movimientos
-      const rawMovements = await client.lrange(REDIS_KEYS.stockMovements, offset, offset + parseInt(limit) - 1);
-      movements = rawMovements.map(m => JSON.parse(m));
+      movements = movements.filter(m => m.productCode === productCode);
+    }
+    
+    // Filtrar por nombre de producto (búsqueda parcial, sin distinción de mayúsculas)
+    if (productName) {
+      const searchTerm = productName.toLowerCase();
+      movements = movements.filter(m => {
+        const name = (m.productName || '').toLowerCase();
+        const code = (m.productCode || '').toLowerCase();
+        return name.includes(searchTerm) || code.includes(searchTerm);
+      });
     }
     
     // Filtrar por tipo si se especifica
@@ -69,6 +77,9 @@ router.get('/', async (req, res) => {
     
     // Ordenar por timestamp (más recientes primero)
     movements.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    
+    // Aplicar limit y offset al final
+    movements = movements.slice(parseInt(offset), parseInt(offset) + parseInt(limit));
     
     res.json({ movements, count: movements.length });
   } catch (err) {
