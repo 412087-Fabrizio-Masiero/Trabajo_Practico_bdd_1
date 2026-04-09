@@ -33,20 +33,18 @@ async function recordStockMovement(client, productCode, productName, type, quant
   return movement;
 }
 
-// Validación básica de producto
+// Validación básica de producto - Solo campos obligatorios
 function validateProductInput(body) {
   const errors = [];
-  const { code, name, category, price, stock, minStock, laboratory, presentation, saleCondition } = body;
+  const { code, name, category, price, stock, saleCondition, laboratory } = body;
   
   if (!code || typeof code !== 'string') errors.push('Código es requerido');
   if (!name || typeof name !== 'string') errors.push('Nombre es requerido');
   if (!category || typeof category !== 'string') errors.push('Categoría es requerida');
+  if (!saleCondition || typeof saleCondition !== 'string') errors.push('Condición de venta es requerida');
+  if (!laboratory || typeof laboratory !== 'string') errors.push('Laboratorio es requerido');
   if (typeof price !== 'number' || price <= 0) errors.push('Precio debe ser un número positivo');
   if (typeof stock !== 'number' || stock < 0) errors.push('Stock debe ser un número no negativo');
-  if (typeof minStock !== 'number' || minStock < 0) errors.push('Stock mínimo debe ser un número no negativo');
-  if (!laboratory || typeof laboratory !== 'string') errors.push('Laboratorio es requerido');
-  if (!presentation || typeof presentation !== 'string') errors.push('Tipo de presentación es requerido');
-  if (!saleCondition || typeof saleCondition !== 'string') errors.push('Condición de venta es requerida');
   
   return errors;
 }
@@ -201,7 +199,7 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ error: 'Datos inválidos', details: errors });
     }
     
-    const { code, name, description, category, price, stock, minStock, laboratory, presentation, saleCondition, drugs, offer } = req.body;
+    const { code, name, description, category, price, stock, minStock, laboratory, presentation, saleCondition, drugs, offer, expiryDate } = req.body;
     const client = getRedisClient();
     
     // Verificar si ya existe
@@ -214,17 +212,20 @@ router.post('/', async (req, res) => {
     const product = {
       code,
       name,
-      description: description || '',
       category,
       price: price.toString(),
       stock: stock.toString(),
-      minStock: minStock.toString(),
       laboratory,
-      presentation,
+      presentation: presentation || '',
       saleCondition,
       createdAt: now,
       updatedAt: now,
     };
+    
+    // Agregar campos opcionales solo si existen
+    if (description) product.description = description;
+    if (minStock !== undefined) product.minStock = minStock.toString();
+    if (expiryDate) product.expiryDate = expiryDate;
     
     // Agregar offer si existe
     if (offer) {
@@ -244,9 +245,13 @@ router.post('/', async (req, res) => {
     await client.sadd(REDIS_KEYS.categories, category);
     await client.sadd(REDIS_KEYS.productsByCategory(category), code);
     
-    // Agregar a sorted set de vencimiento
-    const expiryTimestamp = new Date(expiryDate).getTime();
-    await client.zadd(REDIS_KEYS.expiringProducts, expiryTimestamp, code);
+    // Agregar a sorted set de vencimiento si hay fecha
+    if (expiryDate) {
+      const expiryTimestamp = new Date(expiryDate).getTime();
+      if (!isNaN(expiryTimestamp)) {
+        await client.zadd(REDIS_KEYS.expiringProducts, expiryTimestamp, code);
+      }
+    }
     
     // Parsear para respuesta
     product.price = parseFloat(product.price);

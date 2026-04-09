@@ -78,7 +78,15 @@ async function apiRequest(endpoint, options = {}) {
   const response = await fetch(url, config);
   console.log('Response:', response.status, response.ok);
   if (!response.ok) {
-    throw new Error(`HTTP ${response.status}`);
+    // Intentar obtener el mensaje de error del servidor
+    let errorMessage = `HTTP ${response.status}`;
+    try {
+      const errorData = await response.json();
+      errorMessage = errorData.error || errorData.details || JSON.stringify(errorData);
+    } catch (e) {
+      // Si no se puede parsear, usar el status
+    }
+    throw new Error(errorMessage);
   }
   return response.json();
 }
@@ -719,7 +727,11 @@ async function handleProductSubmit(e) {
   
   product.price = parseFloat(document.getElementById('product-price').value);
   product.stock = parseInt(document.getElementById('product-stock').value);
-  product.minStock = parseInt(document.getElementById('product-min-stock').value);
+  
+  const minStockInput = document.getElementById('product-min-stock').value;
+  if (minStockInput) {
+    product.minStock = parseInt(minStockInput);
+  }
   
   const laboratory = document.getElementById('product-laboratory').value;
   if (laboratory) product.laboratory = laboratory;
@@ -761,7 +773,29 @@ async function handleProductSubmit(e) {
     loadProducts();
     loadDashboard();
   } catch (err) {
-    showToast('Error: ' + err.message, 'error');
+    // Manejo de errores específicos
+    let errorMessage = err.message;
+    
+    // Parsear el error si viene como JSON
+    try {
+      if (err.message.includes('{') || err.message.includes('"error"')) {
+        const errorData = JSON.parse(err.message);
+        errorMessage = errorData.error || errorData.details || err.message;
+      }
+    } catch (e) {
+      // Si no se puede parsear, usar el mensaje original
+    }
+    
+    // Mensajes específicos para cada tipo de error
+    if (err.message.includes('409') || errorMessage.includes('ya existe')) {
+      showToast('⚠️ El código "' + product.code + '" ya existe. Usá otro código.', 'warning');
+    } else if (err.message.includes('400') || errorMessage.includes('Datos inválidos')) {
+      showToast('⚠️ Verificá los datos obligatorios: código, nombre, categoría, condición de venta, laboratorio, precio y stock.', 'warning');
+    } else if (err.message.includes('409') || errorMessage.includes('código')) {
+      showToast('⚠️ El código del producto ya existe. Elegí otro.', 'warning');
+    } else {
+      showToast('Error: ' + errorMessage, 'error');
+    }
   }
 }
 
@@ -825,10 +859,11 @@ function addDrugRow(drugName = '', drugQuantity = '', showRemove = false) {
   const container = document.getElementById('drugs-container');
   const row = document.createElement('div');
   row.className = 'drug-row';
+  row.style.cssText = 'display: flex; gap: 8px; align-items: center; margin-bottom: 4px;';
   
   row.innerHTML = `
-    <select class="drug-select">
-      <option value="">Seleccionar droga...</option>
+    <select class="drug-select" style="flex: 1; padding: 6px 8px; font-size: 13px;">
+      <option value="">Seleccionar...</option>
       <option value="paracetamol">Paracetamol</option>
       <option value="ibuprofeno">Ibuprofeno</option>
       <option value="amoxicilina">Amoxicilina</option>
@@ -839,21 +874,11 @@ function addDrugRow(drugName = '', drugQuantity = '', showRemove = false) {
       <option value="losartan">Losartán</option>
       <option value="metformina">Metformina</option>
       <option value="atorvastatina">Atorvastatina</option>
-      <option value="amlodipino">Amlodipino</option>
-      <option value="enalapril">Enalapril</option>
-      <option value="levotiroxina">Levotiroxina</option>
-      <option value="hidrocortisona">Hidrocortisona</option>
-      <option value="dexametasona">Dexametasona</option>
-      <option value="prednisona">Prednisona</option>
-      <option value="salbutamol">Salbutamol</option>
-      <option value="montelukast">Montelukast</option>
-      <option value="loratadina">Loratadina</option>
-      <option value="cetirizina">Cetirizina</option>
       <option value="otro">Otra</option>
     </select>
-    <input type="text" class="drug-quantity" placeholder="Cantidad (ej: 500mg)" value="${escapeHtml(drugQuantity)}">
-    <button type="button" class="btn btn-sm btn-secondary" onclick="addDrugRow()">+</button>
-    <button type="button" class="btn btn-sm btn-danger" onclick="removeDrugRow(this)" ${showRemove ? '' : 'style="display:none"'}>-</button>
+    <input type="text" class="drug-quantity" placeholder="Cantidad" value="${escapeHtml(drugQuantity)}" style="padding: 6px 8px; font-size: 13px; width: 80px;">
+    <button type="button" class="btn btn-sm btn-secondary" onclick="addDrugRow()" style="padding: 4px 8px; font-size: 12px;">+</button>
+    <button type="button" class="btn btn-sm btn-danger" onclick="removeDrugRow(this)" ${showRemove ? '' : 'style="display:none"'} style="padding: 4px 8px; font-size: 12px;">-</button>
   `;
   
   // Set drug name if provided
@@ -875,6 +900,15 @@ function closeProductModal() {
   const modal = document.getElementById('product-modal');
   modal.classList.remove('active');
   state.editingProductCode = null;
+  
+  // Reset form fields
+  const form = document.getElementById('product-form');
+  form.reset();
+  
+  // Clear drugs container (keep only the first row with default values)
+  const drugsContainer = document.getElementById('drugs-container');
+  drugsContainer.innerHTML = '';
+  addDrugRow(); // Add empty row
 }
 
 async function deleteCurrentProduct() {

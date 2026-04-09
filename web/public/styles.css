@@ -666,11 +666,47 @@ body {
 .modal-content {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
-  max-width: 600px;
-  width: 100%;
+  max-width: 700px;
+  width: 95%;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: hidden;
   box-shadow: var(--shadow-lg);
+}
+
+#product-modal .modal-content {
+  max-width: 550px;
+}
+
+#product-modal .form-row {
+  margin-bottom: 6px;
+}
+
+#product-modal .form-group {
+  margin-bottom: 6px;
+}
+
+#product-modal .form-group input,
+#product-modal .form-group select {
+  padding: 6px 8px;
+  font-size: 13px;
+}
+
+#product-modal .drug-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+#product-modal .drug-select {
+  flex: 1;
+  padding: 6px 8px;
+  font-size: 13px;
+}
+
+#product-modal .drug-quantity {
+  padding: 6px 8px;
+  font-size: 13px;
+  width: 80px;
 }
 
 .modal-small {
@@ -710,19 +746,19 @@ body {
 }
 
 .form-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .form-group {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 6px;
-  font-size: 14px;
+  margin-bottom: 4px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text);
 }

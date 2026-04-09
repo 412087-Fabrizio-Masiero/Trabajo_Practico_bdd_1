@@ -265,38 +265,35 @@
 
   <!-- Modal para crear/editar producto -->
   <div id="product-modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 id="modal-title">Nuevo Producto</h2>
+    <div class="modal-content" style="max-width: 700px; max-height: 90vh; overflow: hidden;">
+      <div class="modal-header" style="padding: 12px 16px;">
+        <h2 id="modal-title" style="font-size: 16px;">Nuevo Producto</h2>
         <button class="modal-close" onclick="closeProductModal()">&times;</button>
       </div>
-      <form id="product-form" class="product-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="product-code">Código</label>
-            <input type="text" id="product-code" required>
+      <form id="product-form" class="product-form" style="padding: 12px 16px;">
+        <!-- Fila 1: Código + Nombre -->
+        <div class="form-row" style="gap: 8px; margin-bottom: 8px;">
+          <div class="form-group" style="margin-bottom: 8px;">
+            <label for="product-code" style="font-size: 12px; margin-bottom: 2px;">Código *</label>
+            <input type="text" id="product-code" required style="padding: 6px 8px; font-size: 13px;">
           </div>
-          <div class="form-group">
-            <label for="product-name">Nombre</label>
-            <input type="text" id="product-name" required>
+          <div class="form-group" style="margin-bottom: 8px; flex: 2;">
+            <label for="product-name" style="font-size: 12px; margin-bottom: 2px;">Nombre *</label>
+            <input type="text" id="product-name" required style="padding: 6px 8px; font-size: 13px;">
           </div>
         </div>
-        <div class="form-group">
-          <label for="product-description">Descripción</label>
-          <textarea id="product-description" rows="2"></textarea>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="product-category">Categoría</label>
-            <select id="product-category">
+        
+        <!-- Fila 2: Categoría + Presentación + Condición -->
+        <div class="form-row" style="gap: 8px; margin-bottom: 8px;">
+          <div class="form-group" style="margin-bottom: 8px;">
+            <label for="product-category" style="font-size: 12px; margin-bottom: 2px;">Categoría *</label>
+            <select id="product-category" style="padding: 6px 8px; font-size: 13px;">
               <option value="">Seleccionar...</option>
             </select>
           </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="product-presentation">Tipo de Presentación</label>
-            <select id="product-presentation" required>
+          <div class="form-group" style="margin-bottom: 8px;">
+            <label for="product-presentation" style="font-size: 12px; margin-bottom: 2px;">Presentación</label>
+            <select id="product-presentation" style="padding: 6px 8px; font-size: 13px;">
               <option value="">Seleccionar...</option>
               <option value="comprimido">Comprimido</option>
               <option value="capsula">Cápsula</option>
@@ -305,18 +302,13 @@
               <option value="crema">Crema</option>
               <option value="gel">Gel</option>
               <option value="gotas">Gotas</option>
-              <option value="pomada">Pomada</option>
-              <option value="aerosol">Aerosol</option>
               <option value="pastilla">Pastilla</option>
-              <option value="sobre">Sobre</option>
-              <option value="supositorio">Supositorio</option>
-              <option value="parche">Parche</option>
               <option value="otro">Otro</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="product-sale-condition">Condición de Venta</label>
-            <select id="product-sale-condition" required>
+          <div class="form-group" style="margin-bottom: 8px;">
+            <label for="product-sale-condition" style="font-size: 12px; margin-bottom: 2px;">Condición *</label>
+            <select id="product-sale-condition" style="padding: 6px 8px; font-size: 13px;">
               <option value="">Seleccionar...</option>
               <option value="venta-libre">Venta Libre</option>
               <option value="bajo-receta">Bajo Receta</option>
@@ -327,9 +319,11 @@
             </select>
           </div>
         </div>
-        <div class="form-group">
-          <label for="product-laboratory">Laboratorio</label>
-          <select id="product-laboratory" required>
+        
+        <!-- Fila 3: Laboratorio -->
+        <div class="form-group" style="margin-bottom: 8px;">
+          <label for="product-laboratory" style="font-size: 12px; margin-bottom: 2px;">Laboratorio *</label>
+          <select id="product-laboratory" style="padding: 6px 8px; font-size: 13px;">
             <option value="">Seleccionar...</option>
             <option value="Bayer">Bayer</option>
             <option value="Roche">Roche</option>
@@ -337,98 +331,80 @@
             <option value="Pfizer">Pfizer</option>
             <option value="Merck">Merck</option>
             <option value="GSK">GSK</option>
-            <option value="Johnson & Johnson">Johnson & Johnson</option>
             <option value="Sanofi">Sanofi</option>
             <option value="Abbott">Abbott</option>
-            <option value="Bristol Myers Squibb">Bristol Myers Squibb</option>
-            <option value="Boehringer Ingelheim">Boehringer Ingelheim</option>
-            <option value="Takeda">Takeda</option>
             <option value="AstraZeneca">AstraZeneca</option>
-            <option value="Eli Lilly">Eli Lilly</option>
-            <option value="Amgen">Amgen</option>
-            <option value="Gilead">Gilead</option>
-            <option value="Biogen">Biogen</option>
-            <option value="Vertex">Vertex</option>
-            <option value="Regeneron">Regeneron</option>
-            <option value="Moderna">Moderna</option>
             <option value="Elea">Elea</option>
             <option value="Bagó">Bagó</option>
-            <option value="Sidus">Sidus</option>
-            <option value="Klonal">Klonal</option>
-            <option value="Tuteur">Tuteur</option>
-            <option value="Fresenius Kabi">Fresenius Kabi</option>
-            <option value="Montpellier">Montpellier</option>
-            <option value="Schaerer">Schaerer</option>
-            <option value="Bausch">Bausch</option>
-            <option value="Poen">Poen</option>
-            <option value="Casasco">Casasco</option>
             <option value="Otro">Otro</option>
           </select>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="product-price">Precio</label>
-            <input type="number" id="product-price" min="0" step="0.01" required>
+        
+        <!-- Fila 4: Precio + Stock + Stock Mín -->
+        <div class="form-row" style="gap: 8px; margin-bottom: 8px;">
+          <div class="form-group" style="margin-bottom: 8px;">
+            <label for="product-price" style="font-size: 12px; margin-bottom: 2px;">Precio *</label>
+            <input type="number" id="product-price" min="0" step="0.01" required style="padding: 6px 8px; font-size: 13px;">
           </div>
-          <div class="form-group">
-            <label for="product-stock">Stock</label>
-            <input type="number" id="product-stock" min="0" required>
+          <div class="form-group" style="margin-bottom: 8px;">
+            <label for="product-stock" style="font-size: 12px; margin-bottom: 2px;">Stock *</label>
+            <input type="number" id="product-stock" min="0" required style="padding: 6px 8px; font-size: 13px;">
+          </div>
+          <div class="form-group" style="margin-bottom: 8px;">
+            <label for="product-min-stock" style="font-size: 12px; margin-bottom: 2px;">Stock Mín</label>
+            <input type="number" id="product-min-stock" min="0" style="padding: 6px 8px; font-size: 13px;">
           </div>
         </div>
-        <div class="form-group">
-          <label for="product-min-stock">Stock Mínimo</label>
-          <input type="number" id="product-min-stock" min="0" required>
+        
+        <!-- Fila 5: Descripción -->
+        <div class="form-group" style="margin-bottom: 8px;">
+          <label for="product-description" style="font-size: 12px; margin-bottom: 2px;">Descripción</label>
+          <input type="text" id="product-description" placeholder="Opcional" style="padding: 6px 8px; font-size: 13px;">
         </div>
-        <div class="form-row" style="align-items: center;">
+        
+        <!-- Fila 6: Oferta -->
+        <div class="form-row" style="gap: 8px; margin-bottom: 8px; align-items: center;">
           <div class="form-group" style="margin-bottom: 0;">
-            <label for="product-offer-discount">Descuento Oferta (%)</label>
-            <input type="number" id="product-offer-discount" min="0" max="100" step="1" placeholder="0">
+            <label for="product-offer-discount" style="font-size: 12px; margin-bottom: 2px;">Oferta %</label>
+            <input type="number" id="product-offer-discount" min="0" max="100" placeholder="0" style="padding: 6px 8px; font-size: 13px; width: 80px;">
           </div>
           <div class="form-group" style="margin-bottom: 0;">
-            <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-              <input type="checkbox" id="product-offer-active" style="width: 18px; height: 18px; margin: 0;">
-              <span>Oferta Activa</span>
+            <label class="checkbox-label" style="display: flex; align-items: center; gap: 4px; cursor: pointer; font-size: 13px;">
+              <input type="checkbox" id="product-offer-active" style="width: 16px; height: 16px; margin: 0;">
+              <span>Activa</span>
             </label>
           </div>
         </div>
-        <div class="form-group">
-          <label>Droga(s) - Principio Activo</label>
-          <div id="drugs-container">
-            <div class="drug-row">
-              <select class="drug-select">
-                <option value="">Seleccionar droga...</option>
-                <option value="paracetamol">Paracetamol</option>
-                <option value="ibuprofeno">Ibuprofeno</option>
-                <option value="amoxicilina">Amoxicilina</option>
-                <option value="azitromicina">Azitromicina</option>
-                <option value="dipirona">Dipirona</option>
-                <option value="diclofenaco">Diclofenaco</option>
-                <option value="omeprazol">Omeprazol</option>
-                <option value="losartan">Losartán</option>
-                <option value="metformina">Metformina</option>
-                <option value="atorvastatina">Atorvastatina</option>
-                <option value="amlodipino">Amlodipino</option>
-                <option value="enalapril">Enalapril</option>
-                <option value="levotiroxina">Levotiroxina</option>
-                <option value="hidrocortisona">Hidrocortisona</option>
-                <option value="dexametasona">Dexametasona</option>
-                <option value="prednisona">Prednisona</option>
-                <option value="salbutamol">Salbutamol</option>
-                <option value="montelukast">Montelukast</option>
-                <option value="loratadina">Loratadina</option>
-                <option value="cetirizina">Cetirizina</option>
-                <option value="otro">Otra</option>
-              </select>
-              <input type="text" class="drug-quantity" placeholder="Cantidad (ej: 500mg)">
-              <button type="button" class="btn btn-sm btn-secondary" onclick="addDrugRow()">+</button>
-              <button type="button" class="btn btn-sm btn-danger" onclick="removeDrugRow(this)" style="display:none;">-</button>
-            </div>
+        
+        <!-- Fila 7: Droga -->
+        <div class="form-group" style="margin-bottom: 8px;">
+          <label style="font-size: 12px; margin-bottom: 2px;">Droga</label>
+          <div id="drugs-container" style="display: flex; gap: 8px; align-items: center;">
+            <select class="drug-select" style="padding: 6px 8px; font-size: 13px; flex: 1;">
+              <option value="">Seleccionar...</option>
+              <option value="paracetamol">Paracetamol</option>
+              <option value="ibuprofeno">Ibuprofeno</option>
+              <option value="amoxicilina">Amoxicilina</option>
+              <option value="azitromicina">Azitromicina</option>
+              <option value="dipirona">Dipirona</option>
+              <option value="diclofenaco">Diclofenaco</option>
+              <option value="omeprazol">Omeprazol</option>
+              <option value="losartan">Losartán</option>
+              <option value="metformina">Metformina</option>
+              <option value="atorvastatina">Atorvastatina</option>
+              <option value="otro">Otra</option>
+            </select>
+            <input type="text" class="drug-quantity" placeholder="Cantidad" style="padding: 6px 8px; font-size: 13px; width: 100px;">
+            <button type="button" class="btn btn-sm btn-secondary" onclick="addDrugRow()" style="padding: 4px 8px; font-size: 12px;">+</button>
           </div>
         </div>
-        <div class="form-actions">
-          <button type="button" class="btn btn-danger" id="delete-product-btn" onclick="deleteCurrentProduct()" style="display:none;">Eliminar</button>
-          <button type="button" class="btn btn-secondary" onclick="closeProductModal()">Cancelar</button>
-          <button type="submit" class="btn btn-primary">Guardar</button>
+        
+        <!-- Fila 8: Acciones -->
+        <div class="form-actions" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border);">
+          <button type="button" class="btn btn-danger" id="delete-product-btn" onclick="deleteCurrentProduct()" style="display:none; padding: 6px 12px; font-size: 13px;">Eliminar</button>
+          <div style="flex: 1;"></div>
+          <button type="button" class="btn btn-secondary" onclick="closeProductModal()" style="padding: 6px 12px; font-size: 13px;">Cancelar</button>
+          <button type="submit" class="btn btn-primary" style="padding: 6px 16px; font-size: 13px;">Guardar</button>
         </div>
       </form>
     </div>

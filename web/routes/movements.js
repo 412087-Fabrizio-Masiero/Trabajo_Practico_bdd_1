@@ -32,7 +32,7 @@ async function recordMovement(client, movement) {
 router.get('/', async (req, res) => {
   let client = null;
   try {
-    const { productCode, type, limit = 50, offset = 0 } = req.query;
+    const { productCode, type, limit = 50, offset = 0, dateFrom, dateTo } = req.query;
     client = getRedisClient();
     
     let movements = [];
@@ -51,6 +51,20 @@ router.get('/', async (req, res) => {
     // Filtrar por tipo si se especifica
     if (type) {
       movements = movements.filter(m => m.type === type);
+    }
+    
+    // Filtrar por fecha desde
+    if (dateFrom) {
+      const fromDate = new Date(dateFrom);
+      fromDate.setHours(0, 0, 0, 0);
+      movements = movements.filter(m => new Date(m.timestamp) >= fromDate);
+    }
+    
+    // Filtrar por fecha hasta
+    if (dateTo) {
+      const toDate = new Date(dateTo);
+      toDate.setHours(23, 59, 59, 999);
+      movements = movements.filter(m => new Date(m.timestamp) <= toDate);
     }
     
     // Ordenar por timestamp (más recientes primero)
